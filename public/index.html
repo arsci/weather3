@@ -45,84 +45,6 @@
                     contentType: 'application/json; charset=utf-8',
                     dataType: 'json',
                     success: function(data) {
-						$("#val1").text(data.rows[0].name);
-						$("#val2").text(data.rows[1].name);
-						$("#val3").text(data.rows[2].name);
-						$("#val4").text(data.rows[3].name);
-						$("#val5").text(data.rows[4].name);
-						$("#val6").text(data.rows[5].name);
-						$("#val7").text(data.rows[6].name);
-						$("#val8").text(data.rows[7].name);
-						$("#val9").text(data.rows[8].name);
-						$("#val10").text(data.rows[9].name);
-						$("#val11").text(data.rows[10].name);
-						$("#val12").text(data.rows[11].name);
-						$("#val13").text(data.rows[12].name);
-						$("#val14").text(data.rows[13].name);
-						$("#val15").text(data.rows[14].name);
-						$("#val16").text(data.rows[15].name);
-						$("#val17").text(data.rows[16].name);
-						$("#val18").text(data.rows[17].name);
-						$("#val19").text(data.rows[18].name);
-						$("#val20").text(data.rows[19].name);
-
-						$("#aval1").text(data.rows[0].sensorvalue__c);
-						$("#aval2").text(data.rows[1].sensorvalue__c);
-						$("#aval3").text(data.rows[2].sensorvalue__c);
-						$("#aval4").text(data.rows[3].sensorvalue__c);
-						$("#aval5").text(data.rows[4].sensorvalue__c);
-						$("#aval6").text(data.rows[5].sensorvalue__c);
-						$("#aval7").text(data.rows[6].sensorvalue__c);
-						$("#aval8").text(data.rows[7].sensorvalue__c);
-						$("#aval9").text(data.rows[8].sensorvalue__c);
-						$("#aval10").text(data.rows[9].sensorvalue__c);
-						$("#aval11").text(data.rows[10].sensorvalue__c);
-						$("#aval12").text(data.rows[11].sensorvalue__c);
-						$("#aval13").text(data.rows[12].sensorvalue__c);
-						$("#aval14").text(data.rows[13].sensorvalue__c);
-						$("#aval15").text(data.rows[14].sensorvalue__c);
-						$("#aval16").text(data.rows[15].sensorvalue__c);
-						$("#aval17").text(data.rows[16].sensorvalue__c);
-						$("#aval18").text(data.rows[17].sensorvalue__c);
-						$("#aval19").text(data.rows[18].sensorvalue__c);
-						$("#aval20").text(data.rows[19].sensorvalue__c);
-
-						
-					}
-                })
-		
-	    });
-	});
-        $(function() {
-            $("#phoneChangerForm").submit(function(event) {
-		event.preventDefault();
-                $.ajax({
-                    url: event.target.action,
-                    method: event.target.method,
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success: function(data) {
-						$("#sensorvalue").text(data.rows[0].sensorvalue__c);
-						$("#sensortimestamp").text(data.rows[0].sensortimestamp__c);
-						$("#id").text(data.rows[0].id);
-						$("#name").text(data.rows[0].name);
-						$("#deviceuser").text(data.rows[0].deviceuser__c);
-						$("#deviceos").text(data.rows[0].deviceos__c);
-						$("#loginuname").text(data.rows[0].loginuname__c);
-						$("#devicename").text(data.rows[0].devicename__c);
-						$("#_hc_lastop").text(data.rows[0]._hc_lastop);
-						$("#mcuinfo").text(data.rows[0].mcuinfo__c);
-						$("#deviceipint").text(data.rows[0].deviceipint__c);
-						$("#deviceipext").text(data.rows[0].deviceipext__c);
-						$("#localtime").text(data.rows[0].localtimestamppst__c);
-						$("#sensorinfo").text(data.rows[0].sensorinfo__c);
-						
-						$("#dataview").show();
-						$("#exit").show();
-						$("#list").hide();
-						$("#recent").hide();
-						$("#listpage").hide();
-						
 						var labels1 = [];
 						var data1 = [];
 						for(var l=0; l<20; l++){
@@ -170,7 +92,45 @@
 								}
 							}
 						});
-						myChart.update(2000);	
+						myChart.update(2000);
+
+						
+					}
+                })
+		
+	    });
+	});
+        $(function() {
+            $("#phoneChangerForm").submit(function(event) {
+		event.preventDefault();
+                $.ajax({
+                    url: event.target.action,
+                    method: event.target.method,
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function(data) {
+						$("#sensorvalue").text(data.rows[0].sensorvalue__c);
+						$("#sensortimestamp").text(data.rows[0].sensortimestamp__c);
+						$("#id").text(data.rows[0].id);
+						$("#name").text(data.rows[0].name);
+						$("#deviceuser").text(data.rows[0].deviceuser__c);
+						$("#deviceos").text(data.rows[0].deviceos__c);
+						$("#loginuname").text(data.rows[0].loginuname__c);
+						$("#devicename").text(data.rows[0].devicename__c);
+						$("#_hc_lastop").text(data.rows[0]._hc_lastop);
+						$("#mcuinfo").text(data.rows[0].mcuinfo__c);
+						$("#deviceipint").text(data.rows[0].deviceipint__c);
+						$("#deviceipext").text(data.rows[0].deviceipext__c);
+						$("#localtime").text(data.rows[0].localtimestamppst__c);
+						$("#sensorinfo").text(data.rows[0].sensorinfo__c);
+						
+						$("#dataview").show();
+						$("#exit").show();
+						$("#list").hide();
+						$("#recent").hide();
+						$("#listpage").hide();
+						
+							
 					}
                 })
             });
@@ -191,48 +151,31 @@
                 <h3 class="panel-title"></h3>
 				<form id="phoneChangerForm" action="/update" method="get" style="width: 400px">
 					<div id="recent">
-						<button type="submit" class="btn btn-primary">Load Recent Data</button>
+						<button type="submit" class="btn btn-primary">Load Detailed Data (Most Recent)</button>
 						<br><br>
 					</div>
 				</form>
 					
 				<form id="reload" action="/update" method="get" style="width: 400px">
 					<div id="exit">
-						<button type="submit" class="btn btn-primary">Exit</button>
+						<button type="submit" class="btn btn-primary">Main Menu</button>
 						<br><br>
 					</div>
 				</form>
 					
 				<form id="listing" action="/update" method="get" style="width: 400px">
 					<div id="list">
-						<button type="submit" class="btn btn-primary">List Recent Entries</button>
+						<button type="submit" class="btn btn-primary">List Historical Graph (20 Data Points)</button>
 						<br><br>
 					</div>
 				</form>
             </div>
 	    
 	    <div class="panel-body" id="listpage">
-	    <label for="listpage1">Listing</label>
-		<br>1: <div id="val1"></div><div id="aval1"></div>
-		<br>2: <div id="val2"></div><div id="aval2"></div>
-		<br>3: <div id="val3"></div><div id="aval3"></div>
-		<br>4: <div id="val4"></div><div id="aval4"></div>
-		<br>5: <div id="val5"></div><div id="aval5"></div>
-		<br>6: <div id="val6"></div><div id="aval6"></div>
-		<br>7: <div id="val7"></div><div id="aval7"></div>
-		<br>8: <div id="val8"></div><div id="aval8"></div>
-		<br>9: <div id="val9"></div><div id="aval9"></div>
-		<br>10: <div id="val10"></div><div id="aval10"></div>
-		<br>11: <div id="val11"></div><div id="aval11"></div>
-		<br>12: <div id="val12"></div><div id="aval12"></div>
-		<br>13: <div id="val13"></div><div id="aval13"></div>
-		<br>14: <div id="val14"></div><div id="aval14"></div>
-		<br>15: <div id="val15"></div><div id="aval15"></div>
-		<br>16: <div id="val16"></div><div id="aval16"></div>
-		<br>17: <div id="val17"></div><div id="aval17"></div>
-		<br>18: <div id="val18"></div><div id="aval18"></div>
-		<br>19: <div id="val19"></div><div id="aval19"></div>
-		<br>20: <div id="val20"></div><div id="aval20"></div>
+	    <label for="listpage1"></label>
+		<div class="form-group" id="gv">
+					<canvas id="myChart" width="100" height="100"></canvas>
+		</div>
 	    </div>
 	    
             <div class="panel-body" id="dataview">
@@ -285,9 +228,7 @@
                     <label for="sensorinfo">Sensor Information: </label>
                     <div id="sensorinfo">
                 </div>				
-            	<div class="form-group" id="gv">
-					<canvas id="myChart" width="100" height="100"></canvas>
-		</div>
+            	
 	     </div>	
         </div>
     </div>
