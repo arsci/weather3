@@ -1,236 +1,219 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="icon" href="https://nameless-taiga-88242.herokuapp.com/KOLuHYOrXW8T324wQ4OM.png">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Light Sensor Information</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="/chart/dist/Chart.bundle.js"></script>
-    <style>
-        body {
-            padding-top: 60px;
-        }
-    </style>
-	<script>
-		function defaultView(){
-			$("#dataview").hide();
-			$("#recent").show();
-			$("#list").show();
-			$("#exit").hide();
-			$("#listpage").hide();
-		}
-	</script>		
-    <script>
-	$(function() {
-	    $("#reload").submit(function(event){
-		event.preventDefault();
-		location.reload();		
-	    });
-	});
-	$(function() {
-	    $("#listing").submit(function(event){
-		event.preventDefault();
-		$("#recent").hide();
-		$("#dataview").hide();
-		$("#list").hide();
-		$("#exit").show();
-		$("#listpage").show();
-
-		$.ajax({
-                    url: event.target.action,
-                    method: event.target.method,
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success: function(data) {
-						var labels1 = [];
-						var data1 = [];
-						for(var l=0; l<20; l++){
-							data1[l] = (data.rows[l].sensorvalue__c);
-							labels1[l] = (data.rows[l].localtimestamppst__c);
-						}
-						labels1[0] = "Current: " + labels1[0];
-
-						
-					
-
-						var ctx = document.getElementById("myChart").getContext("2d");
-						ctx.canvas.height = 50;
-						var myChart = new Chart(ctx , {
-							responsive: 'true',
-							type: 'line',
-							data: { 
-								labels: labels1,
-								datasets:[{
-									label: 'Light Intensity (LUX)',
-									pointColor: 'rgba(250,135,20,1)',
-									fillColor: 'rgba(125,150,245,1)',
-									highlightFill: 'rgba(125,150,245,1)',
-									data: data1
-								}]
-							},
-							options: {
-								hover: {
-									mode: 'label'
-								},
-								title: {
-									display: true,
-									text: 'Last 20 Brightness Values (Hover over points to show details)'
-								},
-								scales: {
-									yAxes: [{
-										ticks: {
-											min: 40,
-											max: 60
-										}
-									}],
-									xAxes: [{
-										display: false
-									}]
-								}
+	<head>
+		<link rel="icon" href="https://nameless-taiga-88242.herokuapp.com/KOLuHYOrXW8T324wQ4OM.png">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Light Sensor Information</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="/chart/dist/Chart.bundle.js"></script>
+		<style>
+			body {
+				padding-top: 60px;
+			}
+		</style>
+		<script>
+			function defaultView(){
+				$("#dataview").hide();
+				$("#recent").show();
+				$("#list").show();
+				$("#exit").hide();
+				$("#listpage").hide();
+			}
+		</script>		
+		<script>
+			$(function() {
+				$("#reload").submit(function(event){
+					event.preventDefault();
+					location.reload();		
+				});
+			});
+			$(function() {
+				$("#listing").submit(function(event){
+					event.preventDefault();
+					$("#recent").hide();
+					$("#dataview").hide();
+					$("#list").hide();
+					$("#exit").show();
+					$("#listpage").show();
+					$.ajax({
+						url: event.target.action,
+						method: event.target.method,
+						contentType: 'application/json; charset=utf-8',
+						dataType: 'json',
+						success: function(data) {
+							var labels1 = [];
+							var data1 = [];
+							for(var l=0; l<20; l++){
+								data1[l] = (data.rows[l].sensorvalue__c);
+								labels1[l] = (data.rows[l].localtimestamppst__c);
 							}
-						});
-						myChart.update(2000);
-
-						
-					}
-                })
-		
-	    });
-	});
-        $(function() {
-            $("#phoneChangerForm").submit(function(event) {
-		event.preventDefault();
-                $.ajax({
-                    url: event.target.action,
-                    method: event.target.method,
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success: function(data) {
-						$("#sensorvalue").text(data.rows[0].sensorvalue__c);
-						$("#sensortimestamp").text(data.rows[0].sensortimestamp__c);
-						$("#id").text(data.rows[0].id);
-						$("#name").text(data.rows[0].name);
-						$("#deviceuser").text(data.rows[0].deviceuser__c);
-						$("#deviceos").text(data.rows[0].deviceos__c);
-						$("#loginuname").text(data.rows[0].loginuname__c);
-						$("#devicename").text(data.rows[0].devicename__c);
-						$("#_hc_lastop").text(data.rows[0]._hc_lastop);
-						$("#mcuinfo").text(data.rows[0].mcuinfo__c);
-						$("#deviceipint").text(data.rows[0].deviceipint__c);
-						$("#deviceipext").text(data.rows[0].deviceipext__c);
-						$("#localtime").text(data.rows[0].localtimestamppst__c);
-						$("#sensorinfo").text(data.rows[0].sensorinfo__c);
-						
-						$("#dataview").show();
-						$("#exit").show();
-						$("#list").hide();
-						$("#recent").hide();
-						$("#listpage").hide();
-						
-							
-					}
-                })
-            });
-        });
-    </script>
-</head>
-<body onload = "defaultView()">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Light Sensor Information</a>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-                <h3 class="panel-title"></h3>
-				<form id="phoneChangerForm" action="/update" method="get" style="width: 400px">
-					<div id="recent">
-						<button type="submit" class="btn btn-primary">Load Detailed Data (Most Recent)</button>
-						<br><br>
+							labels1[0] = "Current: " + labels1[0];
+							var ctx = document.getElementById("myChart").getContext("2d");
+							ctx.canvas.height = 50;
+							var myChart = new Chart(ctx , {
+								responsive: 'true',
+								type: 'line',
+								data: { 
+									labels: labels1,
+									datasets:[{
+										label: 'Light Intensity (LUX)',
+										pointColor: 'rgba(250,135,20,1)',
+										fillColor: 'rgba(125,150,245,1)',
+										highlightFill: 'rgba(125,150,245,1)',
+										data: data1
+									}]	
+								},	
+								options: {
+									hover: {
+										mode: 'label'
+									},
+									title: {
+										display: true,
+										text: 'Last 20 Brightness Values (Hover over points to show details)'
+									},
+									scales: {
+										yAxes: [{
+											ticks: {
+												min: 40,
+												max: 60
+											}	
+										}],
+										xAxes: [{
+											display: false
+										}]
+									}
+								}
+							});
+							myChart.update(2000);						
+						}
+					})
+				});
+			});
+			$(function() {
+				$("#phoneChangerForm").submit(function(event) {
+					event.preventDefault();
+					$.ajax({
+						url: event.target.action,
+						method: event.target.method,
+						contentType: 'application/json; charset=utf-8',
+						dataType: 'json',
+						success: function(data) {
+							$("#sensorvalue").text(data.rows[0].sensorvalue__c);
+							$("#sensortimestamp").text(data.rows[0].sensortimestamp__c);
+							$("#id").text(data.rows[0].id);
+							$("#name").text(data.rows[0].name);
+							$("#deviceuser").text(data.rows[0].deviceuser__c);
+							$("#deviceos").text(data.rows[0].deviceos__c);
+							$("#loginuname").text(data.rows[0].loginuname__c);
+							$("#devicename").text(data.rows[0].devicename__c);
+							$("#_hc_lastop").text(data.rows[0]._hc_lastop);
+							$("#mcuinfo").text(data.rows[0].mcuinfo__c);
+							$("#deviceipint").text(data.rows[0].deviceipint__c);
+							$("#deviceipext").text(data.rows[0].deviceipext__c);
+							$("#localtime").text(data.rows[0].localtimestamppst__c);
+							$("#sensorinfo").text(data.rows[0].sensorinfo__c);
+							$("#dataview").show();
+							$("#exit").show();
+							$("#list").hide();
+							$("#recent").hide();
+							$("#listpage").hide();
+						}
+					})
+				});
+			});
+		</script>
+	</head>
+	<body onload = "defaultView()">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Light Sensor Information</a>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"></h3>
+					<form id="phoneChangerForm" action="/update" method="get" style="width: 400px">
+						<div id="recent">
+							<button type="submit" class="btn btn-primary">Load Detailed Data (Most Recent)</button>
+							<br><br>
+						</div>
+					</form>
+					<form id="reload" action="/update" method="get" style="width: 400px">
+						<div id="exit">
+							<button type="submit" class="btn btn-primary">Main Menu</button>
+							<br><br>
+						</div>
+					</form>	
+					<form id="listing" action="/update" method="get" style="width: 400px">
+						<div id="list">
+							<button type="submit" class="btn btn-primary">Load Historical Data (Graph)</button>
+							<br>
+						</div>
+					</form>
+				</div>
+				<div class="panel-body" id="listpage">
+					<label for="listpage1"></label>
+					<div class="form-group" id="gv">
+						<canvas id="myChart" width="100" height="100"></canvas>
 					</div>
-				</form>
-					
-				<form id="reload" action="/update" method="get" style="width: 400px">
-					<div id="exit">
-						<button type="submit" class="btn btn-primary">Main Menu</button>
-						<br><br>
+				</div>
+				<div class="panel-body" id="dataview">
+					<div class="form-group" id="sv">
+						<label for="sensorvalue">Brightness Level (LUX):</label>
+						<div id="sensorvalue"></div>
 					</div>
-				</form>
-					
-				<form id="listing" action="/update" method="get" style="width: 400px">
-					<div id="list">
-						<button type="submit" class="btn btn-primary">Load Historical Data (Graph)</button>
-						<br>
+					<div class="form-group" id="lt">
+						<label for="localtime">Local Timestamp (PST): </label>
+						<div id="localtime"></div>		
 					</div>
-				</form>
-            </div>
-	    
-	    <div class="panel-body" id="listpage">
-	    <label for="listpage1"></label>
-		<div class="form-group" id="gv">
-					<canvas id="myChart" width="100" height="100"></canvas>
+					<div class="form-group" id="st">
+						<label for="sensortimestamp">Database Timestamp (GMT): </label>
+						<div id="sensortimestamp"></div>
+					</div>
+					<div class="form-group" id="did">
+						<label for="id">Database Record ID Number: </label>
+						<div id="id"></div>
+					</div>
+					<div class="form-group" id="dn">
+						<label for="name">Database Record Name:</label>
+						<div id="name"></div>
+					</div>
+					<div class="form-group" id="du">
+						<label for="deviceuser">Device Username (Sensor PC): </label>
+						<div id="deviceuser"></div>
+					</div>
+					<div class="form-group" id="ipi">
+						<label for="deviceipext">Device IP (External) (Sensor PC): </label>
+						<div id="deviceipext"></div>
+					</div>
+					<div class="form-group" id="ipe">
+						<label for="deviceipint">Device IP (Internal) (Sensor PC): </label>
+						<div id="deviceipint"></div>
+					</div>
+					<div class="form-group" id="os">
+						<label for="deviceos">Device Information (Sensor PC): </label>
+						<div id="deviceos"></div>
+					</div>
+					<div class="form-group" id="syn">
+						<label for="_hc_lastop">Database Sync Status (Salesforce/Heroku): </label>
+						<div id="_hc_lastop"></div>
+					</div>
+					<div class="form-group" id="mcu">
+						<label for="mcuinfo">Microcontroller (MCU) Information: </label>
+						<div id="mcuinfo"></div>
+					</div>
+					<div class="form-group" id="sens">
+						<label for="sensorinfo">Sensor Information: </label>
+						<div id="sensorinfo"></div>
+					</div>				
+				</div>	
+			</div>
 		</div>
-	    </div>
-	    
-            <div class="panel-body" id="dataview">
-                <div class="form-group" id="sv">
-                    <label for="sensorvalue">Brightness Level (LUX):</label>
-                    <div id="sensorvalue"></div>
-                </div><br>
-				<div class="form-group" id="lt">
-                    <label for="localtime">Local Timestamp (PST): </label>
-                    <div id="localtime"></div>
-					
-                </div><br>
-                <div class="form-group" id="st">
-                    <label for="sensortimestamp">Database Timestamp (GMT): </label>
-                    <div id="sensortimestamp"></div>
-                </div><br>
-				<div class="form-group" id="did">
-                    <label for="id">Database Record ID Number: </label>
-                    <div id="id"></div>
-                </div><br>
-				<div class="form-group" id="dn">
-                    <label for="name">Database Record Name:</label>
-                    <div id="name"></div>
-                </div><br>
-				<div class="form-group" id="du">
-                    <label for="deviceuser">Device Username (Sensor PC): </label>
-                    <div id="deviceuser"></div>
-                </div><br>
-				<div class="form-group" id="ipi">
-                    <label for="deviceipext">Device IP (External) (Sensor PC): </label>
-                    <div id="deviceipext"></div>
-                </div><br>
-				<div class="form-group" id="ipe">
-                    <label for="deviceipint">Device IP (Internal) (Sensor PC): </label>
-                    <div id="deviceipint"></div>
-                </div><br>
-				<div class="form-group" id="os">
-                    <label for="deviceos">Device Information (Sensor PC): </label>
-                    <div id="deviceos"></div>
-                </div><br>
-				<div class="form-group" id="syn">
-                    <label for="_hc_lastop">Database Sync Status (Salesforce/Heroku): </label>
-                    <div id="_hc_lastop"></div>
-                </div><br>
-				<div class="form-group" id="mcu">
-                    <label for="mcuinfo">Microcontroller (MCU) Information: </label>
-                    <div id="mcuinfo"></div>
-                </div><br>
-				<div class="form-group" id="sens">
-                    <label for="sensorinfo">Sensor Information: </label>
-                    <div id="sensorinfo"></div>
-                </div>				
-            	
-	     </div>	
-        </div>
-    </div>
-</body>
+	</body>
 </html>
