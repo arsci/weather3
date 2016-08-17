@@ -166,23 +166,23 @@
 				</div>
 			</div>
 		</nav>
-		<div class="container" style="width:80%; margin:center;">
+		<div class="container" style="margin:center;">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"></h3>
-					<form id="phoneChangerForm" action="/update" method="get" style="width:10%">
+					<form id="phoneChangerForm" action="/update" method="get">
 						<div id="recent">
 							<button type="submit" class="btn btn-primary">Load Detailed Data (Most Recent)</button>
 							<br><br>
 						</div>
 					</form>
-					<form id="reload" action="/update" method="get" style="width:10%">
+					<form id="reload" action="/update" method="get">
 						<div id="exit">
 							<button type="submit" class="btn btn-primary">Main Menu</button>
 							<br>
 						</div>
 					</form>	
-					<form id="listing" action="/update" method="get" style="width:10%">
+					<form id="listing" action="/update" method="get">
 						<div id="list">
 							<button type="submit" class="btn btn-primary">Load Historical Data (Graph - Most Recent)</button>
 							<br>
@@ -195,7 +195,7 @@
 				<div class="panel-body" id="listpage">
 					<label for="listpage1"></label>
 					<div class="form-group" id="gv">
-						<canvas id="myChart" width="80" height="100"></canvas>
+						<canvas id="myChart" width="40" height="60"></canvas>
 					</div>
 				</div>
 				<div class="panel-body" id="dataview">
