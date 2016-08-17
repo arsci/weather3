@@ -21,6 +21,8 @@
 				$("#list").show();
 				$("#exit").hide();
 				$("#listpage").hide();
+				$("#date").hide();
+				$("#date_box").hide();	
 			}
 		</script>		
 		<script>
@@ -33,11 +35,26 @@
 			$(function() {
 				$("#listing").submit(function(event){
 					event.preventDefault();
+					var currentDate = new Date();
+					var currentSec = currentDate.getSeconds();
+					var currentMin = currentDate.getMinutes();
+					if(Number(currentSec) < 10) currentSec = "0" + currentSec;
+					if(Number(currentMin) < 10) currentMin = "0" + currentMin;
+					var dateTime = 	"Last Data Refresh: " 	
+									+ (currentDate.getMonth()+1) + "/"
+									+ currentDate.getDate() + "/"
+									+ currentDate.getFullYear() + "  "
+									+ currentDate.getHours() + ":"
+									+ currentMin + ":"
+									+ currentSec;
+					$("#date").text(dateTime);
 					$("#recent").hide();
 					$("#dataview").hide();
 					$("#list").hide();
 					$("#exit").show();
 					$("#listpage").show();
+					$("#date").show();
+					$("#date_box").show();
 					$.ajax({
 						url: event.target.action,
 						method: event.target.method,
@@ -95,6 +112,19 @@
 			$(function() {
 				$("#phoneChangerForm").submit(function(event) {
 					event.preventDefault();
+					var currentDate = new Date();
+					var currentSec = currentDate.getSeconds();
+					var currentMin = currentDate.getMinutes();
+					if(Number(currentSec) < 10) currentSec = "0" + currentSec;
+					if(Number(currentMin) < 10) currentMin = "0" + currentMin;
+					var dateTime =  "Last Data Refresh: " 	
+									+ (currentDate.getMonth()+1) + "/"
+									+ currentDate.getDate() + "/"
+									+ currentDate.getFullYear() + "  "
+									+ currentDate.getHours() + ":"
+									+ currentMin + ":"
+									+ currentSec;
+					$("#date").text(dateTime);
 					$.ajax({
 						url: event.target.action,
 						method: event.target.method,
@@ -117,6 +147,8 @@
 							$("#sensorinfo").text(data.rows[0].sensorinfo__c);
 							$("#dataview").show();
 							$("#exit").show();
+							$("#date").show();
+							$("#date_box").show();
 							$("#list").hide();
 							$("#recent").hide();
 							$("#listpage").hide();
@@ -152,10 +184,13 @@
 					</form>	
 					<form id="listing" action="/update" method="get" style="width: 400px">
 						<div id="list">
-							<button type="submit" class="btn btn-primary">Load Historical Data (Graph)</button>
+							<button type="submit" class="btn btn-primary">Load Historical Data (Graph - Most Recent)</button>
 							<br>
 						</div>
 					</form>
+					<div id="date_box"><br>
+						<div id="date"></div>
+					</div>
 				</div>
 				<div class="panel-body" id="listpage">
 					<label for="listpage1"></label>
