@@ -23,9 +23,7 @@
 				$("#exit").hide();
 				$("#listpage").hide();
 				$("#date").hide();
-				$("#date_box").hide();	
-				$("#wrap_main").show();
-				$("#wrap_second").hide();
+				$("#date_box").hide();
 			}
 			
 			// Function called by MAIN MENU button on page.
@@ -68,8 +66,6 @@
 					$("#listpage").show();
 					$("#date").show();
 					$("#date_box").show();
-					$("#wrap_main").hide();
-					$("#wrap_second").show();
 					
 					// Make function call to jQuery to retrieve data from database
 					$.ajax({
@@ -184,8 +180,6 @@
 							$("#list").hide();
 							$("#recent").hide();
 							$("#listpage").hide();
-							$("#wrap_main").hide();
-							$("#wrap_second").show();
 						}
 					})
 				});
@@ -204,7 +198,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"></h3>
-					<div id="wrap_main">
+					<div id="wrap">
 						<div class="wrap_1" id="wrap_1_id">
 							<form id="phoneChangerForm" action="/update" method="get">
 								<button type="submit" class="btn btn-primary">Load Detailed Data (Most Recent)</button>
