@@ -23,7 +23,7 @@
 				$("#exit").hide();
 				$("#listpage").hide();
 				$("#date").hide();
-				$("#date_box").hide();	
+				$("#date_box").hide();
 			}
 			
 			// Function called by MAIN MENU button on page.
@@ -198,24 +198,23 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"></h3>
-					<form id="phoneChangerForm" action="/update" method="get">
-						<div id="recent">
-							<button type="submit" class="btn btn-primary">Load Detailed Data (Most Recent)</button>
-							<br><br>
+					<div id="wrap">
+						<div class="wrap_1" id="wrap_1_id">
+							<form id="phoneChangerForm" action="/update" method="get">
+								<button type="submit" class="btn btn-primary">Load Detailed Data (Most Recent)</button>
+							</form>
 						</div>
-					</form>
-					<form id="reload" action="/update" method="get">
-						<div id="exit">
+						<div class="wrap_1" id="wrap_1_id">
+							<form id="listing" action="/update" method="get">
+								<button type="submit" class="btn btn-primary">Load Historical Data (Graph - Most Recent)</button>
+							</form>
+						</div>
+					</div>
+					<div id="wrap_second">					
+						<form id="reload" action="/update" method="get">
 							<button type="submit" class="btn btn-primary">Main Menu</button>
-							<br>
-						</div>
-					</form>	
-					<form id="listing" action="/update" method="get">
-						<div id="list">
-							<button type="submit" class="btn btn-primary">Load Historical Data (Graph - Most Recent)</button>
-							<br>
-						</div>
-					</form>
+						</form>	
+					</div>
 					<div id="date_box"><br>
 						<div id="date"></div>
 					</div>
