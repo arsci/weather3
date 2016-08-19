@@ -83,12 +83,10 @@
 							labels1[0] = "Current: " + labels1[0];
 							
 							// Generate graph data
-							var ctx = null;
-							ctx = document.getElementById("myChart").getContext("2d");
+							var ctx = document.getElementById("myChart").getContext("2d");
 							ctx.canvas.height = 50;
-							var myChart = null;
-							myChart = new Chart(ctx , {
-								responsive: 'true',
+							var myChart = new Chart(ctx , {
+								responsive: 'false',
 								type: 'line',
 								data: { 
 									labels: labels1,
@@ -120,9 +118,7 @@
 										}]
 									}
 								}
-							});
-							
-												
+							});				
 						}
 					})
 				});
