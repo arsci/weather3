@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="icon" href="https://nameless-taiga-88242.herokuapp.com/KOLuHYOrXW8T324wQ4OM.png">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Light Sensor Information</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="/chart/dist/Chart.bundle.js"></script>
+		<style>
+			body {
+				padding-top: 60px;
+			}
+		</style>		
+		<script>
+			// Function to setup default DIV view settings
+			function defaultView(){
+				$("#dataview").hide();
+				$("#recent").show();
+				$("#list").show();
+				$("#exit").hide();
+				$("#listpage").hide();
+				$("#date").hide();
+				$("#date_box").hide();	
+			}
+			
+			// Function called by MAIN MENU button on page.
+			// Refreshes page and resets all data, 
+			// forces page to request new data when user selects new menu option.
+			$(function() {
+				$("#reload").submit(function(event){
+					event.preventDefault(); // Do not redirect
+					location.reload(); // Force refresh
+				});
+			});
+			
+			// Calls jQuery code to get data. Called when 'LOAD HISTORICAL DATA' is selected.
+			// Also generates timestamp information and sets DIV view boxes to show requested information.
+			// Generates graph using jsChart library to show last 20 data points with timestamp information.
+			$(function() {
+				$("#listing").submit(function(event){
+					event.preventDefault(); //Do not redirect
+					
+					// Generate 'LAST PAGE REFRESH' timestamp data
+					var currentDate = new Date();
+					var currentSec = currentDate.getSeconds();
+					var currentMin = currentDate.getMinutes();
+					if(Number(currentSec) < 10) currentSec = "0" + currentSec;
+					if(Number(currentMin) < 10) currentMin = "0" + currentMin;
+					var dateTime = 	"Last Page Refresh: " 	
+									+ (currentDate.getMonth()+1) + "/"
+									+ currentDate.getDate() + "/"
+									+ currentDate.getFullYear() + "  "
+									+ currentDate.getHours() + ":"
+									+ currentMin + ":"
+									+ currentSec;
+					$("#date").text(dateTime);
+														
+					// Set DIV box view settings
+					$("#recent").hide();
+					$("#dataview").hide();
+					$("#list").hide();
+					$("#exit").show();
+					$("#listpage").show();
+					$("#date").show();
+					$("#date_box").show();
+					
+					// Make function call to jQuery to retrieve data from database
+					$.ajax({
+						url: event.target.action,
+						method: event.target.method,
+						contentType: 'application/json; charset=utf-8',
+						dataType: 'json',
+						success: function(data) {
+							var labels1 = [];
+							var data1 = [];
+							for(var l=0; l<20; l++){
+								data1[l] = (data.rows[l].sensorvalue__c);
+								labels1[l] = (data.rows[l].localtimestamppst__c);
+							}
+							labels1[0] = "Current: " + labels1[0];
+							
+							// Generate graph data
+							var ctx = document.getElementById("myChart").getContext("2d");
+							ctx.canvas.height = 50;
+							var myChart = new Chart(ctx , {
+								responsive: 'true',
+								type: 'line',
+								data: { 
+									labels: labels1,
+									datasets:[{
+										label: 'Light Intensity (LUX)',
+										pointColor: 'rgba(250,135,20,1)',
+										fillColor: 'rgba(125,150,245,1)',
+										highlightFill: 'rgba(125,150,245,1)',
+										data: data1
+									}]	
+								},	
+								options: {
+									hover: {
+										mode: 'label'
+									},
+									title: {
+										display: true,
+										text: 'Last 20 Brightness Values (Hover over points to show details)'
+									},
+									scales: {
+										yAxes: [{
+											ticks: {
+												min: 40,
+												max: 60
+											}	
+										}],
+										xAxes: [{
+											display: false
+										}]
+									}
+								}
+							});					
+						}
+					})
+				});
+			});
+			
+			// Calls jQuery code to get data. Called when 'LOAD DETAILED DATA' is selected.
+			// Also generates timestamp information and sets DIV view boxes to show requested information.
+			// Shows detailed information on the last database entry. Does not show chart.
+			$(function() {
+				$("#phoneChangerForm").submit(function(event) {
+					event.preventDefault(); // Do not redirect
+					
+					// Generate 'LAST PAGE REFRESH' timestamp data
+					var currentDate = new Date();
+					var currentSec = currentDate.getSeconds();
+					var currentMin = currentDate.getMinutes();
+					if(Number(currentSec) < 10) currentSec = "0" + currentSec;
+					if(Number(currentMin) < 10) currentMin = "0" + currentMin;
+					var dateTime =  "Last Page Refresh: " 	
+									+ (currentDate.getMonth()+1) + "/"
+									+ currentDate.getDate() + "/"
+									+ currentDate.getFullYear() + "  "
+									+ currentDate.getHours() + ":"
+									+ currentMin + ":"
+									+ currentSec;
+					$("#date").text(dateTime);
+					
+					// Make function call to jQuery to retrieve data from database
+					$.ajax({
+						url: event.target.action,
+						method: event.target.method,
+						contentType: 'application/json; charset=utf-8',
+						dataType: 'json',
+						success: function(data) {
+							// Populate page variables with 
+							$("#sensorvalue").text(data.rows[0].sensorvalue__c);
+							$("#sensortimestamp").text(data.rows[0].sensortimestamp__c);
+							$("#id").text(data.rows[0].id);
+							$("#name").text(data.rows[0].name);
+							$("#deviceuser").text(data.rows[0].deviceuser__c);
+							$("#deviceos").text(data.rows[0].deviceos__c);
+							$("#loginuname").text(data.rows[0].loginuname__c);
+							$("#devicename").text(data.rows[0].devicename__c);
+							$("#_hc_lastop").text(data.rows[0]._hc_lastop);
+							$("#mcuinfo").text(data.rows[0].mcuinfo__c);
+							$("#deviceipint").text(data.rows[0].deviceipint__c);
+							$("#deviceipext").text(data.rows[0].deviceipext__c);
+							$("#localtime").text(data.rows[0].localtimestamppst__c);
+							$("#sensorinfo").text(data.rows[0].sensorinfo__c);
+							
+							// Set DIV box view settings
+							$("#dataview").show();
+							$("#exit").show();
+							$("#date").show();
+							$("#date_box").show();
+							$("#list").hide();
+							$("#recent").hide();
+							$("#listpage").hide();
+						}
+					})
+				});
+			});
+		</script>
+	</head>
+	<body onload = "defaultView()">
+		<nav class="navbar navbar-inverse navbar-fixed-top" style="width:100%; margin:center;">
+			<div class="container" style="width:85%; margin:left;">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Light Sensor Information</a>
+				</div>
+			</div>
+		</nav>
+		<div class="container" style="width:82%; margin:center;">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"></h3>
+					<form id="phoneChangerForm" action="/update" method="get">
+						<div id="recent">
+							<button type="submit" class="btn btn-primary">Load Detailed Data (Most Recent)</button>
+							<br><br>
+						</div>
+					</form>
+					<form id="reload" action="/update" method="get">
+						<div id="exit">
+							<button type="submit" class="btn btn-primary">Main Menu</button>
+							<br>
+						</div>
+					</form>	
+					<form id="listing" action="/update" method="get">
+						<div id="list">
+							<button type="submit" class="btn btn-primary">Load Historical Data (Graph - Most Recent)</button>
+							<br>
+						</div>
+					</form>
+					<div id="date_box"><br>
+						<div id="date"></div>
+					</div>
+				</div>
+				<div class="panel-body" id="listpage">
+					<label for="listpage1"></label>
+					<div class="form-group" id="gv">
+						<canvas id="myChart" width="100" height="100"></canvas>
+					</div>
+				</div>
+				<div class="panel-body" id="dataview">
+					<div class="form-group" id="sv">
+						<label for="sensorvalue">Brightness Level (LUX):</label>
+						<div id="sensorvalue"></div>
+					</div>
+					<div class="form-group" id="lt">
+						<label for="localtime">Local Timestamp (PST): </label>
+						<div id="localtime"></div>		
+					</div>
+					<div class="form-group" id="st">
+						<label for="sensortimestamp">Database Timestamp (GMT): </label>
+						<div id="sensortimestamp"></div>
+					</div>
+					<div class="form-group" id="did">
+						<label for="id">Database Record ID Number: </label>
+						<div id="id"></div>
+					</div>
+					<div class="form-group" id="dn">
+						<label for="name">Database Record Name:</label>
+						<div id="name"></div>
+					</div>
+					<div class="form-group" id="du">
+						<label for="deviceuser">Device Username (Sensor PC): </label>
+						<div id="deviceuser"></div>
+					</div>
+					<div class="form-group" id="ipi">
+						<label for="deviceipext">Device IP (External) (Sensor PC): </label>
+						<div id="deviceipext"></div>
+					</div>
+					<div class="form-group" id="ipe">
+						<label for="deviceipint">Device IP (Internal) (Sensor PC): </label>
+						<div id="deviceipint"></div>
+					</div>
+					<div class="form-group" id="os">
+						<label for="deviceos">Device Information (Sensor PC): </label>
+						<div id="deviceos"></div>
+					</div>
+					<div class="form-group" id="syn">
+						<label for="_hc_lastop">Database Sync Status (Salesforce/Heroku): </label>
+						<div id="_hc_lastop"></div>
+					</div>
+					<div class="form-group" id="mcu">
+						<label for="mcuinfo">Microcontroller (MCU) Information: </label>
+						<div id="mcuinfo"></div>
+					</div>
+					<div class="form-group" id="sens">
+						<label for="sensorinfo">Sensor Information: </label>
+						<div id="sensorinfo"></div>
+					</div>				
+				</div>	
+			</div>
+		</div>
+	</body>
+</html>
