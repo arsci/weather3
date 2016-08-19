@@ -83,7 +83,8 @@
 							labels1[0] = "Current: " + labels1[0];
 							
 							// Generate graph data
-							var ctx = document.getElementById("myChart").getContext("2d");
+							var ctx = null;
+							ctx = document.getElementById("myChart").getContext("2d");
 							ctx.canvas.height = 50;
 							var myChart = new Chart(ctx , {
 								responsive: 'true',
