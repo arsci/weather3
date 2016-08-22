@@ -132,25 +132,9 @@
 			// Shows detailed information on the last database entry. Does not show chart.
 			$(function() {
 				$("#phoneChangerForm").submit(function(event) {
-					
-					// Generate 'LAST PAGE REFRESH' timestamp data
-					var currentDate = new Date();
-					var currentSec = currentDate.getSeconds();
-					var currentMin = currentDate.getMinutes();
-					if(Number(currentSec) < 10) currentSec = "0" + currentSec;
-					if(Number(currentMin) < 10) currentMin = "0" + currentMin;
-					var dateTime =  "Last Page Refresh: " 	
-									+ (currentDate.getMonth()+1) + "/"
-									+ currentDate.getDate() + "/"
-									+ currentDate.getFullYear() + "  "
-									+ currentDate.getHours() + ":"
-									+ currentMin + ":"
-									+ currentSec;
-					$("#date").text(dateTime);
-					
 					// Make function call to jQuery to retrieve data from database
 					$.ajax({
-						url: 'http://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate=2010-05-01&enddate=2010-05-01',
+						url: '//www.ncdc.noaa.gov/cdo-web/api/v2/',
 						headers:'token:LeApBvEbPEmAoafGGHbaxbvrpqbQvNpw',
 					})
 				});
