@@ -18,7 +18,7 @@
 			function defaultCall(){				
 				$.ajax({
 						type: 'GET',
-						url: '//api.wunderground.com/api/d95017df2847b211/conditions/forecast/forecast10day/history_20160822/q/94105.json',
+						url: '//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_20160822/q/94105.json',
 						success: function(data) {	
 						
 							//Current Conditions
@@ -30,32 +30,32 @@
 							$("#relative_humidity").text(data.current_observation.relative_humidity);
 							$("#wind_string").text(data.current_observation.wind_string);
 							
-							var labels1 = [];
-							var data1 = [];
-							var labels2 = [];
-							var data2 = [];
-							
-							for(var l=0; l<27; l++){
-								data1[l] = (data.history.observations[l].tempi);
-								labels1[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
-							}
+							var labelsForecast = [];
+							var dataForecast = [];
+							var labelsHistorical = [];
+							var dataHistorical = [];
 							
 							for(var l=0; l<10; l++){
-								data2[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
-								labels2[l] = (data.forecast.simpleforecast.forecastday[l].date.month + "/" + data.forecast.simpleforecast.forecastday[l].date.day);
+								dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
+								labelsForecast[l] = (data.forecast.simpleforecast.forecastday[l].date.month + "/" + data.forecast.simpleforecast.forecastday[l].date.day);
+							}
+							
+							for(var l=0; l<27; l++){
+								dataHistorical[l] = (data.history.observations[l].tempi);
+								labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
 							}
 							
 							// Generate graph data
-							var ctx2 = document.getElementById("myChart2").getContext("2d");
-							ctx2.canvas.height = 50;
-							var myChart2 = new Chart(ctx2 , {
+							var ctxForecast = document.getElementById("chartForecast").getContext("2d");
+							ctxForecast.canvas.height = 50;
+							var chartForecast = new Chart(ctxForecast , {
 								responsive: 'true',
 								type: 'line',
 								data: { 
-									labels: labels2,
+									labels: labelsForecast,
 									datasets:[{
 										label: 'Temp',
-										data: data2
+										data: dataForecast
 									}]	
 								},	
 								options: {
@@ -81,16 +81,16 @@
 							});
 							
 							// Generate graph data
-							var ctx = document.getElementById("myChart").getContext("2d");
-							ctx.canvas.height = 50;
-							var myChart = new Chart(ctx , {
+							var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
+							ctxHistorical.canvas.height = 50;
+							var chartHistorical = new Chart(ctxHistorical , {
 								responsive: 'true',
 								type: 'line',
 								data: { 
-									labels: labels1,
+									labels: labelsHistorical,
 									datasets:[{
 										label: 'Temp',
-										data: data1
+										data: dataHistorical
 									}]	
 								},	
 								options: {
@@ -168,7 +168,7 @@
 				<div class="panel-body" id="forecast">
 					<label for="listpage1"></label>
 					<div class="form-group" id="gv">
-						<canvas id="myChart2" width="100" height="100"></canvas>
+						<canvas id="chartForecast" width="100" height="100"></canvas>
 					</div>
 				</div>
 				<div class="panel-heading">
@@ -177,7 +177,7 @@
 				<div class="panel-body" id="hist_graph">
 					<label for="listpage1"></label>
 					<div class="form-group" id="gv">
-						<canvas id="myChart" width="100" height="100"></canvas>
+						<canvas id="chartHistorical" width="100" height="100"></canvas>
 					</div>
 				</div>				
 			</div>
