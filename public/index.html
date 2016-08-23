@@ -35,9 +35,9 @@
 							var labels1 = [];
 							var data1 = [];
 							
-							for(var l=0; l<20; l++){
+							for(var l=0; l<27; l++){
 								data1[l] = (data.history.observations[l].tempi);
-								labels1[l] = (data.history.observations[l].date.pretty);
+								labels1[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
 							}
 							
 							// Generate graph data
@@ -69,7 +69,7 @@
 											}	
 										}],
 										xAxes: [{
-											display: false
+											display: true
 										}]
 									}
 								}
