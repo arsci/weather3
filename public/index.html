@@ -17,6 +17,11 @@
 		<script>
 			// Function to setup default DIV view settings
 			function defaultView(){
+			
+				var jsonData = {
+					"text1" : "textData1",
+					"text2" : "textData2"
+				};
 				$.ajax({
 						type: 'GET',
 						url: '//www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate=2010-05-01&enddate=2010-05-01',
