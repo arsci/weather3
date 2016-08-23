@@ -23,7 +23,7 @@
 				};
 				$.ajax({
 						type: 'GET',
-						url: '//www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate=2010-05-01&enddate=2010-05-01',
+						url: '//www.ncdc.noaa.gov/cdo-web/api/v2/datatypes?datacategoryid=TEMP&limit=10',
 						headers:{'token':'LeApBvEbPEmAoafGGHbaxbvrpqbQvNpw'},
 						success: function(data) {	
 							$("#id").text(data.results[0].datatype);
