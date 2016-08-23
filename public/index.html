@@ -30,6 +30,46 @@
 							$("#relative_humidity").text(data.current_observation.relative_humidity);
 							$("#wind_string").text(data.current_observation.wind_string);
 							
+							for(var l=0; l<20; l++){
+								data1[l] = (data.history.observations[l].tempi);
+								labels1[l] = (data.history.observations[l].date.pretty);
+							}
+							
+							// Generate graph data
+							var ctx = document.getElementById("myChart").getContext("2d");
+							ctx.canvas.height = 50;
+							var myChart = new Chart(ctx , {
+								responsive: 'true',
+								type: 'line',
+								data: { 
+									labels: labels1,
+									datasets:[{
+										label: 'Historical Temperature Data',
+										data: data1
+									}]	
+								},	
+								options: {
+									hover: {
+										mode: 'label'
+									},
+									title: {
+										display: true,
+										text: 'Last 20 Brightness Values (Hover over points to show details)'
+									},
+									scales: {
+										yAxes: [{
+											ticks: {
+												min: 40,
+												max: 60
+											}	
+										}],
+										xAxes: [{
+											display: false
+										}]
+									}
+								}
+							});
+							
 							//Historical Conditions
 							$("#h_0_l").text(data.history.observations[0].date.pretty);
 							$("#h_1_l").text(data.history.observations[1].date.pretty);
@@ -124,6 +164,12 @@
 				</div>
 				<div class="panel-heading">
 					<h3 class="panel-title">Historical Conditions</h3>
+				</div>
+				<div class="panel-body" id="listpage">
+					<label for="listpage1"></label>
+					<div class="form-group" id="gv">
+						<canvas id="myChart" width="100" height="100"></canvas>
+					</div>
 				</div>
 				<div class="panel-body" id="sv">
 					<div class="form-group" id="h1">
