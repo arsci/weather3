@@ -30,6 +30,9 @@
 							$("#relative_humidity").text(data.current_observation.relative_humidity);
 							$("#wind_string").text(data.current_observation.wind_string);
 							
+							var labels1 = [];
+							var data1 = [];
+							
 							for(var l=0; l<20; l++){
 								data1[l] = (data.history.observations[l].tempi);
 								labels1[l] = (data.history.observations[l].date.pretty);
