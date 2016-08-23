@@ -15,7 +15,6 @@
 			}
 		</style>		
 		<script>
-			// Function to setup default DIV view settings
 			function defaultView(){
 			
 				var jsonData = {
@@ -29,6 +28,7 @@
 						data : { json: JSON.stringify( jsonData ) },
 						success: function(data) {
 							$('#ajax').append(data.text1).append( ['<br/>', data.text2].join('') );
+							$("#id").text(data.results[0].datatype);
 						}
 					})
 			}
@@ -45,7 +45,10 @@
 			</div>
 		</nav>
 		<div class="container" style="width:82%; margin:center;">
-			
+			<div class="form-group" id="did">
+				<label for="id">Database Record ID Number: </label>
+				<div id="id"></div>
+			</div>
 		</div>
 	</body>
 </html>
