@@ -37,7 +37,7 @@
 							
 							for(var l=0; l<10; l++){
 								dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
-								labelsForecast[l] = (data.forecast.simpleforecast.forecastday[l].date.month + "/" + data.forecast.simpleforecast.forecastday[l].date.day);
+								labelsForecast[l] = (data.forecast.simpleforecast.forecastday[l].date.weekday + " " + data.forecast.simpleforecast.forecastday[l].date.monthname + " " + data.forecast.simpleforecast.forecastday[l].date.day + ", " + data.forecast.simpleforecast.forecastday[l].date.year);
 							}
 							
 							for(var l=0; l<27; l++){
@@ -54,7 +54,7 @@
 								data: { 
 									labels: labelsForecast,
 									datasets:[{
-										label: 'Temp',
+										label: 'Temperature (F): ',
 										data: dataForecast
 									}]	
 								},	
@@ -89,7 +89,7 @@
 								data: { 
 									labels: labelsHistorical,
 									datasets:[{
-										label: 'Temp',
+										label: 'Temperature (F): ',
 										data: dataHistorical
 									}]	
 								},	
