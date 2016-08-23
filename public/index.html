@@ -15,12 +15,7 @@
 			}
 		</style>		
 		<script>
-			function defaultCall(){
-			
-				$("#current").hide();
-				$("#forecast").hide();
-				$("#hist_graph").hide();
-				$("#hist_data").hide();
+			function defaultCall(){				
 				$.ajax({
 						type: 'GET',
 						url: '//api.wunderground.com/api/d95017df2847b211/conditions/forecast/forecast10day/history_20160822/q/94105.json',
@@ -119,56 +114,8 @@
 									}
 								}
 							});
-							
-							//Historical Conditions
-							$("#h_0_l").text(data.history.observations[0].date.pretty);
-							$("#h_1_l").text(data.history.observations[1].date.pretty);
-							$("#h_2_l").text(data.history.observations[2].date.pretty);
-							$("#h_3_l").text(data.history.observations[3].date.pretty);
-							$("#h_4_l").text(data.history.observations[4].date.pretty);
-							$("#h_5_l").text(data.history.observations[5].date.pretty);
-							$("#h_6_l").text(data.history.observations[6].date.pretty);
-							$("#h_7_l").text(data.history.observations[7].date.pretty);
-							$("#h_8_l").text(data.history.observations[8].date.pretty);
-							$("#h_9_l").text(data.history.observations[9].date.pretty);
-							$("#h_10_l").text(data.history.observations[10].date.pretty);
-							$("#h_11_l").text(data.history.observations[11].date.pretty);
-							$("#h_12_l").text(data.history.observations[12].date.pretty);
-							$("#h_13_l").text(data.history.observations[13].date.pretty);
-							$("#h_14_l").text(data.history.observations[14].date.pretty);
-							$("#h_15_l").text(data.history.observations[15].date.pretty);
-							$("#h_16_l").text(data.history.observations[16].date.pretty);
-							$("#h_17_l").text(data.history.observations[17].date.pretty);
-							$("#h_18_l").text(data.history.observations[18].date.pretty);
-							$("#h_19_l").text(data.history.observations[19].date.pretty);
-							$("#h_20_l").text(data.history.observations[20].date.pretty);
-							
-							$("#h_0_t").text(data.history.observations[0].tempi);
-							$("#h_1_t").text(data.history.observations[1].tempi);
-							$("#h_2_t").text(data.history.observations[2].tempi);
-							$("#h_3_t").text(data.history.observations[3].tempi);
-							$("#h_4_t").text(data.history.observations[4].tempi);
-							$("#h_5_t").text(data.history.observations[5].tempi);
-							$("#h_6_t").text(data.history.observations[6].tempi);
-							$("#h_7_t").text(data.history.observations[7].tempi);
-							$("#h_8_t").text(data.history.observations[8].tempi);
-							$("#h_9_t").text(data.history.observations[9].tempi);
-							$("#h_10_t").text(data.history.observations[10].tempi);
-							$("#h_11_t").text(data.history.observations[11].tempi);
-							$("#h_12_t").text(data.history.observations[12].tempi);
-							$("#h_13_t").text(data.history.observations[13].tempi);
-							$("#h_14_t").text(data.history.observations[14].tempi);
-							$("#h_15_t").text(data.history.observations[15].tempi);
-							$("#h_16_t").text(data.history.observations[16].tempi);
-							$("#h_17_t").text(data.history.observations[17].tempi);
-							$("#h_18_t").text(data.history.observations[18].tempi);
-							$("#h_19_t").text(data.history.observations[19].tempi);
-							$("#h_20_t").text(data.history.observations[20].tempi);
 						}
 					})
-				$("#current").show();
-				$("#forecast").show();
-				$("#hist_graph").show();
 			}		
 		</script>
 	</head>
@@ -232,92 +179,6 @@
 					<div class="form-group" id="gv">
 						<canvas id="myChart" width="100" height="100"></canvas>
 					</div>
-				</div>
-				<div class="panel-body" id="hist_data">
-					<div class="form-group" id="h1">
-						<div id="h_0_l"></div>
-						<div id="h_0_t"></div>
-					</div>
-					<div class="form-group" id="tmp">
-						<div id="h_1_l"></div>
-						<div id="h_1_t"></div>		
-					</div>
-					<div class="form-group" id="vis">
-						<div id="h_2_l"></div>
-						<div id="h_2_t"></div>
-					</div>
-					<div class="form-group" id="prs">
-						<div id="h_3_l"></div>
-						<div id="h_3_t"></div>
-					</div>
-					<div class="form-group" id="obs">
-						<div id="h_4_l"></div>
-						<div id="h_4_t"></div>
-					</div>
-					<div class="form-group" id="hum">
-						<div id="h_5_l"></div>
-						<div id="h_5_t"></div>
-					</div>
-					<div class="form-group" id="wnd">
-						<div id="h_6_l"></div>
-						<div id="h_6_t"></div>
-					</div>
-					<div class="form-group" id="h1">
-						<div id="h_7_l"></div>
-						<div id="h_7_t"></div>
-					</div>
-					<div class="form-group" id="tmp">
-						<div id="h_8_l"></div>
-						<div id="h_8_t"></div>		
-					</div>
-					<div class="form-group" id="vis">
-						<div id="h_9_l"></div>
-						<div id="h_9_t"></div>
-					</div>
-					<div class="form-group" id="prs">
-						<div id="h_10_l"></div>
-						<div id="h_10_t"></div>
-					</div>
-					<div class="form-group" id="obs">
-						<div id="h_11_l"></div>
-						<div id="h_11_t"></div>
-					</div>
-					<div class="form-group" id="hum">
-						<div id="h_12_l"></div>
-						<div id="h_12_t"></div>
-					</div>
-					<div class="form-group" id="wnd">
-						<div id="h_13_l"></div>
-						<div id="h_13_t"></div>
-					</div>
-					<div class="form-group" id="prs">
-						<div id="h_14_l"></div>
-						<div id="h_14_t"></div>
-					</div>
-					<div class="form-group" id="obs">
-						<div id="h_15_l"></div>
-						<div id="h_15_t"></div>
-					</div>
-					<div class="form-group" id="hum">
-						<div id="h_16_l"></div>
-						<div id="h_16_t"></div>
-					</div>
-					<div class="form-group" id="wnd">
-						<div id="h_17_l"></div>
-						<div id="h_17_t"></div>
-					</div>		
-					<div class="form-group" id="obs">
-						<div id="h_18_l"></div>
-						<div id="h_18_t"></div>
-					</div>
-					<div class="form-group" id="hum">
-						<div id="h_19_l"></div>
-						<div id="h_19_t"></div>
-					</div>
-					<div class="form-group" id="wnd">
-						<div id="h_20_l"></div>
-						<div id="h_20_t"></div>
-					</div>					
 				</div>				
 			</div>
 		</div>
