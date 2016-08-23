@@ -16,6 +16,8 @@
 		</style>		
 		<script>
 			function defaultCall(){
+			
+				$("#sv2").hide();
 				$.ajax({
 						type: 'GET',
 						url: '//api.wunderground.com/api/d95017df2847b211/conditions/history_20160822/q/94105.json',
@@ -62,8 +64,8 @@
 									scales: {
 										yAxes: [{
 											ticks: {
-												min: 40,
-												max: 60
+												min: 55,
+												max: 75
 											}	
 										}],
 										xAxes: [{
@@ -174,7 +176,7 @@
 						<canvas id="myChart" width="100" height="100"></canvas>
 					</div>
 				</div>
-				<div class="panel-body" id="sv">
+				<div class="panel-body" id="sv2">
 					<div class="form-group" id="h1">
 						<div id="h_0_l"></div>
 						<div id="h_0_t"></div>
