@@ -9,20 +9,14 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="/chart/dist/Chart.bundle.js"></script>
-		<script src="/pgLoadDefault.js"></script>
+		<script src="pgLoadDefault.js"></script>
 		<style>
 			body {
 				padding-top: 60px;
 			}
 		</style>
-		<script>
-			function pageLoadedDefault(){
-				$.getScript('/pgLoadDefault.js', function(pageLoadDefault()){
-				});
-			}
-		</script>
 	</head>
-	<body onload = "pageLoadedDefault()">
+	<body onload = "pageLoadDefault()">
 		<nav class="navbar navbar-inverse navbar-fixed-top" style="width:100%; margin:center;">
 			<div class="container" style="width:99%; margin:left;">
 				<div class="navbar-header">
