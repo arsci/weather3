@@ -134,8 +134,13 @@
 				$("#phoneChangerForm").submit(function(event) {
 					// Make function call to jQuery to retrieve data from database
 					$.ajax({
+						type: 'GET',
 						url: '//www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate=2010-05-01&enddate=2010-05-01',
-						headers:'token:LeApBvEbPEmAoafGGHbaxbvrpqbQvNpw',
+						headers:{'token':'LeApBvEbPEmAoafGGHbaxbvrpqbQvNpw'},
+						data : { json: JSON.stringify( jsonData ) },
+						success: function(data) {
+							$('#ajax').append(data.text1).append( ['<br/>', data.text2].join('') );
+						}
 					})
 				});
 			});
