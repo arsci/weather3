@@ -132,14 +132,54 @@
 			// Shows detailed information on the last database entry. Does not show chart.
 			$(function() {
 				$("#phoneChangerForm").submit(function(event) {
+					event.preventDefault(); // Do not redirect
+					
+					// Generate 'LAST PAGE REFRESH' timestamp data
+					var currentDate = new Date();
+					var currentSec = currentDate.getSeconds();
+					var currentMin = currentDate.getMinutes();
+					if(Number(currentSec) < 10) currentSec = "0" + currentSec;
+					if(Number(currentMin) < 10) currentMin = "0" + currentMin;
+					var dateTime =  "Last Page Refresh: " 	
+									+ (currentDate.getMonth()+1) + "/"
+									+ currentDate.getDate() + "/"
+									+ currentDate.getFullYear() + "  "
+									+ currentDate.getHours() + ":"
+									+ currentMin + ":"
+									+ currentSec;
+					$("#date").text(dateTime);
+					
 					// Make function call to jQuery to retrieve data from database
 					$.ajax({
-						type: 'GET',
-						url: '//www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate=2010-05-01&enddate=2010-05-01',
-						headers:{'token':'LeApBvEbPEmAoafGGHbaxbvrpqbQvNpw'},
-						data : { json: JSON.stringify( jsonData ) },
+						url: event.target.action,
+						method: event.target.method,
+						contentType: 'application/json; charset=utf-8',
+						dataType: 'json',
 						success: function(data) {
-							$('#ajax').append(data.text1).append( ['<br/>', data.text2].join('') );
+							// Populate page variables with 
+							$("#sensorvalue").text(data.rows[0].sensorvalue__c);
+							$("#sensortimestamp").text(data.rows[0].sensortimestamp__c);
+							$("#id").text(data.rows[0].id);
+							$("#name").text(data.rows[0].name);
+							$("#deviceuser").text(data.rows[0].deviceuser__c);
+							$("#deviceos").text(data.rows[0].deviceos__c);
+							$("#loginuname").text(data.rows[0].loginuname__c);
+							$("#devicename").text(data.rows[0].devicename__c);
+							$("#_hc_lastop").text(data.rows[0]._hc_lastop);
+							$("#mcuinfo").text(data.rows[0].mcuinfo__c);
+							$("#deviceipint").text(data.rows[0].deviceipint__c);
+							$("#deviceipext").text(data.rows[0].deviceipext__c);
+							$("#localtime").text(data.rows[0].localtimestamppst__c);
+							$("#sensorinfo").text(data.rows[0].sensorinfo__c);
+							
+							// Set DIV box view settings
+							$("#dataview").show();
+							$("#exit").show();
+							$("#date").show();
+							$("#date_box").show();
+							$("#list").hide();
+							$("#recent").hide();
+							$("#listpage").hide();
 						}
 					})
 				});
