@@ -42,9 +42,9 @@
 								labels1[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
 							}
 							
-							for(var l=0; l<27; l++){
-								data2[l] = (data.history.observations[l].tempi);
-								labels2[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
+							for(var l=0; l<10; l++){
+								data2[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
+								labels2[l] = (data.forecast.simpleforecast.forecastday[l].date.month + "/" + data.forecast.simpleforecast.forecastday[l].date.day);
 							}
 							
 							// Generate graph data
@@ -56,7 +56,7 @@
 								data: { 
 									labels: labels2,
 									datasets:[{
-										label: 'Forecast Temperature Data',
+										label: '10 Day Forecast Temperature Data',
 										data: data2
 									}]	
 								},	
@@ -66,7 +66,7 @@
 									},
 									title: {
 										display: true,
-										text: 'Forecast Conditions'
+										text: '10 Day Forecast Conditions'
 									},
 									scales: {
 										yAxes: [{
