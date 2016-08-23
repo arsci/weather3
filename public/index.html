@@ -14,7 +14,13 @@
 			body {
 				padding-top: 60px;
 			}
-		</style>		
+		</style>
+		<script>
+			function pageLoadedDefault(){
+				$.getScript('/pgLoadDefault.js', function(pageLoadDefault(){
+				});
+			}
+		</script>
 	</head>
 	<body onload = "pageLoadDefault()">
 		<nav class="navbar navbar-inverse navbar-fixed-top" style="width:100%; margin:center;">
