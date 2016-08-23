@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Light Sensor Information</title>
+		<title>Weather API Data</title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="/chart/dist/Chart.bundle.js"></script>
@@ -16,21 +16,20 @@
 		</style>		
 		<script>
 			function defaultCall(){
-			
-				var jsonData = {
-					"text1" : "textData1",
-					"text2" : "textData2"
-				};
 				$.ajax({
 						type: 'GET',
 						url: '//api.wunderground.com/api/d95017df2847b211/conditions/q/94105.json',
 						success: function(data) {	
 							$("#location").text(data.current_observation.observation_location.full);
+							$("#temp_f").text(data.current_observation.temperature_string);
+							$("#visibility_mi").text(data.current_observation.visibility_mi);
+							$("#pressure_in").text(data.current_observation.pressure_in);
+							$("#observation_time").text(data.current_observation.observation_time);
+							$("#relative_humidity").text(data.current_observation.relative_humidity);
+							$("#wind_string").text(data.current_observation.wind_string);
 						}
 					})
-			}
-			
-			
+			}		
 		</script>
 	</head>
 	<body onload = "defaultCall()">
@@ -46,60 +45,34 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">NOAA API Data</h3>
 				</div>
-				<div class="panel-body" id="listpage">
-					<label for="listpage1"></label>
-					<div class="form-group" id="gv">
-						<canvas id="myChart" width="100" height="100"></canvas>
-					</div>
-				</div>
-				<div class="panel-body" id="dataview">
+				<div class="panel-body" id="loc">
 					<div class="form-group" id="sv">
-						<label for="location">Location Data:</label>
+						<label for="location">Location:</label>
 						<div id="location"></div>
 					</div>
-					<div class="form-group" id="lt">
-						<label for="localtime">Local Timestamp (PST): </label>
-						<div id="localtime"></div>		
+					<div class="form-group" id="tmp">
+						<label for="temp_f">Local Timestamp (PST): </label>
+						<div id="temp_f"></div>		
 					</div>
-					<div class="form-group" id="st">
-						<label for="sensortimestamp">Database Timestamp (GMT): </label>
-						<div id="sensortimestamp"></div>
+					<div class="form-group" id="vis">
+						<label for="visibility_mi">Visibility: </label>
+						<div id="visibility_mi"></div>
 					</div>
-					<div class="form-group" id="did">
-						<label for="id">Database Record ID Number: </label>
-						<div id="id"></div>
+					<div class="form-group" id="prs">
+						<label for="pressure_in">Pressure (IN): </label>
+						<div id="pressure_in"></div>
 					</div>
-					<div class="form-group" id="dn">
-						<label for="name">Database Record Name:</label>
-						<div id="name"></div>
+					<div class="form-group" id="obs">
+						<label for="observation_time">Last Update:</label>
+						<div id="observation_time"></div>
 					</div>
-					<div class="form-group" id="du">
-						<label for="deviceuser">Device Username (Sensor PC): </label>
-						<div id="deviceuser"></div>
+					<div class="form-group" id="hum">
+						<label for="relative_humidity">Humidity: </label>
+						<div id="relative_humidity"></div>
 					</div>
-					<div class="form-group" id="ipi">
-						<label for="deviceipext">Device IP (External) (Sensor PC): </label>
-						<div id="deviceipext"></div>
-					</div>
-					<div class="form-group" id="ipe">
-						<label for="deviceipint">Device IP (Internal) (Sensor PC): </label>
-						<div id="deviceipint"></div>
-					</div>
-					<div class="form-group" id="os">
-						<label for="deviceos">Device Information (Sensor PC): </label>
-						<div id="deviceos"></div>
-					</div>
-					<div class="form-group" id="syn">
-						<label for="_hc_lastop">Database Sync Status (Salesforce/Heroku): </label>
-						<div id="_hc_lastop"></div>
-					</div>
-					<div class="form-group" id="mcu">
-						<label for="mcuinfo">Microcontroller (MCU) Information: </label>
-						<div id="mcuinfo"></div>
-					</div>
-					<div class="form-group" id="sens">
-						<label for="sensorinfo">Sensor Information: </label>
-						<div id="sensorinfo"></div>
+					<div class="form-group" id="wnd">
+						<label for="wind_string">Wind: </label>
+						<div id="wind_string"></div>
 					</div>				
 				</div>	
 			</div>
