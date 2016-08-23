@@ -31,7 +31,21 @@
 							$("#wind_string").text(data.current_observation.wind_string);
 							
 							//Historical Conditions
+							$("#h_0_l").text(data.history.observations[0].tempi);
+							$("#h_1_l").text(data.history.observations[1].tempi);
+							$("#h_2_l").text(data.history.observations[2].tempi);
+							$("#h_3_l").text(data.history.observations[3].tempi);
+							$("#h_4_l").text(data.history.observations[4].tempi);
+							$("#h_5_l").text(data.history.observations[5].tempi);
+							$("#h_6_l").text(data.history.observations[6].tempi);
 							
+							$("#h_0_t").text(data.history.observations[0].tempi);
+							$("#h_1_t").text(data.history.observations[1].tempi);
+							$("#h_2_t").text(data.history.observations[2].tempi);
+							$("#h_3_t").text(data.history.observations[3].tempi);
+							$("#h_4_t").text(data.history.observations[4].tempi);
+							$("#h_5_t").text(data.history.observations[5].tempi);
+							$("#h_6_t").text(data.history.observations[6].tempi);
 						}
 					})
 			}		
@@ -53,7 +67,7 @@
 				<div class="panel-body" id="sv">
 					<div class="form-group" id="loc">
 						<label for="location">Location:</label>
-						<div id="location"><div id="temp_f"></div></div>
+						<div id="location"></div>
 					</div>
 					<div class="form-group" id="tmp">
 						<label for="temp_f">Temperature: </label>
@@ -84,33 +98,33 @@
 					<h3 class="panel-title">Historical Conditions</h3>
 				</div>
 				<div class="panel-body" id="sv">
-					<div class="form-group" id="loc">
-						<label for="hist_temp">Historical Temp:</label>
-						<div id="h_t"></div><br>
+					<div class="form-group" id="h1">
+						<div id="h_0_l"></div>
+						<div id="h_0_t"></div>
 					</div>
 					<div class="form-group" id="tmp">
-						<label for="temp_f">Temperature: </label>
-						<div id="temp_f"></div>		
+						<div id="h_1_l"></div>
+						<div id="h_1_t"></div>		
 					</div>
 					<div class="form-group" id="vis">
-						<label for="visibility_mi">Visibility (MI): </label>
-						<div id="visibility_mi"></div>
+						<div id="h_2_l"></div>
+						<div id="h_2_t"></div>
 					</div>
 					<div class="form-group" id="prs">
-						<label for="pressure_in">Pressure (IN): </label>
-						<div id="pressure_in"></div>
+						<div id="h_3_l"></div>
+						<div id="h_3_t"></div>
 					</div>
 					<div class="form-group" id="obs">
-						<label for="observation_time">Last Update:</label>
-						<div id="observation_time"></div>
+						<div id="h_4_l"></div>
+						<div id="h_4_t"></div>
 					</div>
 					<div class="form-group" id="hum">
-						<label for="relative_humidity">Humidity: </label>
-						<div id="relative_humidity"></div>
+						<div id="h_5_l"></div>
+						<div id="h_5_t"></div>
 					</div>
 					<div class="form-group" id="wnd">
-						<label for="wind_string">Wind: </label>
-						<div id="wind_string"></div>
+						<div id="h_6_l"></div>
+						<div id="h_6_t"></div>
 					</div>				
 				</div>				
 			</div>
