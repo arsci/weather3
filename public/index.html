@@ -25,7 +25,7 @@
 						type: 'GET',
 						url: '//api.wunderground.com/api/d95017df2847b211/conditions/q/94105.json',
 						success: function(data) {	
-							$("#id").text(data.results[0].datatype);
+							$("#location").text(data.current_observation.observation_location.full);
 						}
 					})
 			}
@@ -54,8 +54,8 @@
 				</div>
 				<div class="panel-body" id="dataview">
 					<div class="form-group" id="sv">
-						<label for="sensorvalue">Brightness Level (LUX):</label>
-						<div id="sensorvalue"></div>
+						<label for="location">Location Data:</label>
+						<div id="location"></div>
 					</div>
 					<div class="form-group" id="lt">
 						<label for="localtime">Local Timestamp (PST): </label>
