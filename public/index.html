@@ -34,11 +34,53 @@
 							
 							var labels1 = [];
 							var data1 = [];
+							var labels2 = [];
+							var data2 = [];
 							
 							for(var l=0; l<27; l++){
 								data1[l] = (data.history.observations[l].tempi);
 								labels1[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
 							}
+							
+							for(var l=0; l<27; l++){
+								data2[l] = (data.history.observations[l].tempi);
+								labels2[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
+							}
+							
+							// Generate graph data
+							var ctx2 = document.getElementById("myChart2").getContext("2d");
+							ctx2.canvas.height = 50;
+							var myChart2 = new Chart(ctx2 , {
+								responsive: 'true',
+								type: 'line',
+								data: { 
+									labels: labels2,
+									datasets:[{
+										label: 'Forecast Temperature Data',
+										data: data2
+									}]	
+								},	
+								options: {
+									hover: {
+										mode: 'label'
+									},
+									title: {
+										display: true,
+										text: 'Forecast Conditions'
+									},
+									scales: {
+										yAxes: [{
+											ticks: {
+												min: 55,
+												max: 75
+											}	
+										}],
+										xAxes: [{
+											display: true
+										}]
+									}
+								}
+							});
 							
 							// Generate graph data
 							var ctx = document.getElementById("myChart").getContext("2d");
@@ -59,7 +101,7 @@
 									},
 									title: {
 										display: true,
-										text: 'Last 20 Brightness Values (Hover over points to show details)'
+										text: 'Historical Conditions'
 									},
 									scales: {
 										yAxes: [{
@@ -173,7 +215,7 @@
 				<div class="panel-body" id="listpage">
 					<label for="listpage1"></label>
 					<div class="form-group" id="gv">
-						<canvas id="myChart" width="100" height="100"></canvas>
+						<canvas id="myChart2" width="100" height="100"></canvas>
 					</div>
 				</div>
 				<div class="panel-heading">
