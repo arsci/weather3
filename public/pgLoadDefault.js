@@ -28,6 +28,7 @@ function pageLoadDefault(){
 			var dataForecast = [];
 			var labelsHistorical = [];
 			var dataHistorical = [];
+			var dataHistoricalSky = [];
 			
 			for(var l=0; l<10; l++){
 				dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
