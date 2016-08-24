@@ -1,18 +1,7 @@
-function pageLoadDefault(){	
-
-	var yesterayDate = new Date(new Date() - 86400000);
-	var yr = yesterayDate.getFullYear();
-	var mo = yesterayDate.getMonth();
-	var da = yesterayDate.getDate();
-	
-	if(Number(mo) < 10) mo = "0" + mo;
-	if(Number(da) < 10) da = "0" + da;
-	
-	var urlAPI = "//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_" + yr + mo + da + "/q/94105.json";
-	
+function pageLoadDefault(){				
 	$.ajax({
 		type: 'GET',
-		url: urlAPI,
+		url: '//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_20160822/q/94105.json',
 		success: function(data) {	
 		
 			//Current Conditions
@@ -38,13 +27,12 @@ function pageLoadDefault(){
 			for(var l=0; l<24; l++){
 				dataHistorical[l] = (data.history.observations[l].tempi);
 				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
-				dataHistoricalSky[l] = (data.history.observations[l].conds);
+				dataHistoricalSky[l] = (data.history.observations[l].cond);
 			}
-			
 				
 			// Generate graph data
 			var ctxForecast = document.getElementById("chartForecast").getContext("2d");
-			ctxForecast.canvas.height = 25;
+			ctxForecast.canvas.height = 50;
 			var chartForecast = new Chart(ctxForecast , {
 				responsive: 'true',
 				type: 'line',
@@ -62,19 +50,33 @@ function pageLoadDefault(){
 					title: {
 						display: true,
 						text: '10 Day Forecast Conditions'
+					},
+					scales: {
+						yAxes: [{
+							ticks: {
+								min: 55,
+								max: 75
+							}	
+						}],
+						xAxes: [{
+							display: true
+						}]
 					}
 				}
 			});
 			
 			// Generate graph data
 			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
-			ctxHistorical.canvas.height = 25;
+			ctxHistorical.canvas.height = 50;
 			var chartHistorical = new Chart(ctxHistorical , {
 				responsive: 'true',
 				type: 'line',
 				data: { 
 					labels: labelsHistorical,
-					datasets: dataHistorical
+					datasets:[{
+						label: 'Temperature (F)',
+						data: dataHistorical
+					}]	
 				},	
 				options: {
 					hover: {
@@ -83,11 +85,20 @@ function pageLoadDefault(){
 					title: {
 						display: true,
 						text: 'Historical Conditions (Previous Day - Hourly)'
+					},
+					scales: {
+						yAxes: [{
+							ticks: {
+								min: 55,
+								max: 75
+							}	
+						}],
+						xAxes: [{
+							display: true
+						}]
 					}
 				}
 			});
-			
-			ctxHistorical.fillText('5', 80,30);
 		}
 	})
 }		
