@@ -29,7 +29,7 @@ function pageLoadDefault(){
 			for(var l=0; l<24; l++){
 				dataHistorical[l] = (data.history.observations[l].tempi);
 				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
-				dataHistoricalSky[l] = (data.history.observations[l].cond);
+				dataHistoricalSky[l] = (data.history.observations[l].conds);
 			}
 				
 			// Generate graph data
