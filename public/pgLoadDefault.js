@@ -36,7 +36,7 @@ function pageLoadDefault(){
 			}
 			
 			for(var l=0; l<24; l++){
-				dataHistorical[l] = (data.history.observations[l].tempi);
+				dataHistorical[l] = (data.history.observations[l].tempi,data.history.observations[l].conds);
 				dataHistoricalSky[l] = (data.history.observations[l].conds);
 				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
 				
