@@ -87,8 +87,12 @@ function pageLoadDefault(){
 						display: true,
 						text: 'Historical Conditions (Previous Day - Hourly)'
 					},
-					axisX: {
-						labelAngle: 45
+					scales: {
+						xAxes:[{
+							ticks:{
+								maxRotation: 45
+							}
+						}]
 					}
 				}
 			});
