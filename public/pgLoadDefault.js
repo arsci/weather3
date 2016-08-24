@@ -29,7 +29,7 @@ function pageLoadDefault(){
 			for(var l=0; l<24; l++){
 				dataHistorical[l] = (data.history.observations[l].tempi);
 				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
-				dataHistoricalSky[l] = (data.history.observations[l].tempi + 10);
+				dataHistoricalSky[l] = (data.history.observations[l].conds);
 			}
 				
 			// Generate graph data
@@ -61,17 +61,18 @@ function pageLoadDefault(){
 			ctxHistorical.canvas.height = 25;
 			var chartHistorical = new Chart(ctxHistorical , {
 				responsive: 'true',
-				type: 'line',
 				tooltips:{
 					mode: 'label'
 				},
 				data: { 
 					labels: labelsHistorical,
 					datasets:[{
+						type: 'line'
 						label: 'Temperature (F)',
 						data: dataHistorical,
 						yAxisID: 'y-axis-1'
 						},{
+						type: 'bar'
 						label: 'Conditions',
 						data: dataHistoricalSky,
 						yAxisID: 'y-axis-2'
