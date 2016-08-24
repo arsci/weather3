@@ -61,6 +61,7 @@ function pageLoadDefault(){
 			ctxHistorical.canvas.height = 25;
 			var chartHistorical = new Chart(ctxHistorical , {
 				responsive: 'true',
+				multiTooltipTemplate: "<%=datasetLabel%> : <%= value %>",
 				tooltips:{
 					mode: 'label'
 				},
@@ -103,8 +104,11 @@ function pageLoadDefault(){
 							display:true,
 							position:"right",
 							id: "y-axis-2",
+							gridlines:{
+								display:false
+							},
 							labels:{
-								show:true
+								show:false
 							}
 						}]
 					}
