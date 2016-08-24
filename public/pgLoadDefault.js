@@ -70,6 +70,7 @@ function pageLoadDefault(){
 			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
 			ctxHistorical.canvas.height = 25;
 			var chartHistorical = new Chart(ctxHistorical , {
+				multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>" ,
 				responsive: 'true',
 				showTooltips: 'true',
 				type: 'line',
