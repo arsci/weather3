@@ -1,12 +1,12 @@
 function pageLoadDefault(){	
 
-	var currentDate = new Date();
-	var yr = currentDate.getFullYear();
-	var mo = currentDate.getMonth();
-	var da = currentDate.getDate();
+	var yesterayDate = new Date(new Date() - 86400000);
+	var yr = yesterayDate.getFullYear();
+	var mo = yesterayDate.getMonth();
+	var da = yesterayDate.getDate();
 	
 	if(Number(mo) < 10) mo = "0" + mo;
-	if(Number(da) < 10) da = "0" + (Number(da) - 1);
+	if(Number(da) < 10) da = "0" + da;
 	
 	var urlAPI = "//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_" + yr + mo + da + "/q/94105.json";
 	
