@@ -36,7 +36,9 @@ function pageLoadDefault(){
 			
 			for(var l=0; l<24; l++){
 				dataHistorical[l] = (data.history.observations[l].tempi);
+				dataHistoricalSky[l] = (data.history.observations[l].conds);
 				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
+				
 			}
 				
 			// Generate graph data
@@ -75,8 +77,8 @@ function pageLoadDefault(){
 						label: 'Temperature (F)',
 						data: dataHistorical
 					},{
-						labels: 'Condition',
-						data: dataHistorical
+						label: 'Sky Conditions:',
+						data: dataHistoricalSky
 					}]	
 				},	
 				options: {
