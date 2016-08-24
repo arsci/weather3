@@ -79,8 +79,7 @@ function pageLoadDefault(){
 					},
 				}
 			});
-			ctxHistorical.fillText('5', 150,150);
-			
+			ctxHistorical.fillText('6513603202',10,10);
 		}
 	})
 }		
