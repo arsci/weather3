@@ -90,8 +90,9 @@ function pageLoadDefault(){
 					scales: {
 						xAxes:[{
 							ticks:{
-								maxRotation: 45
-							}
+								labelAngle: 45
+							},
+							labelAngle: 45
 						}]
 					}
 				}
