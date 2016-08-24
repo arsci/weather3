@@ -12,7 +12,7 @@ function pageLoadDefault(){
 	
 	$.ajax({
 		type: 'GET',
-		url: '//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_20160822/q/94105.json',
+		url: urlAPI,
 		success: function(data) {	
 		
 			//Current Conditions
