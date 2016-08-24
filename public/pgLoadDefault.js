@@ -53,17 +53,6 @@ function pageLoadDefault(){
 						display: true,
 						text: '10 Day Forecast Conditions'
 					},
-					scales: {
-						yAxes: [{
-							ticks: {
-								min: 55,
-								max: 75
-							}	
-						}],
-						xAxes: [{
-							display: true
-						}]
-					}
 				}
 			});
 			
@@ -88,20 +77,9 @@ function pageLoadDefault(){
 						display: true,
 						text: 'Historical Conditions (Previous Day - Hourly)'
 					},
-					scales: {
-						yAxes: [{
-							ticks: {
-								min: 55,
-								max: 75
-							}	
-						}],
-						xAxes: [{
-							display: true
-						}]
-					}
 				}
 			});
-			ctxHistorical.fillText('5', 80,30);
+			ctxHistorical.fillText('5', 150,150);
 			
 		}
 	})
