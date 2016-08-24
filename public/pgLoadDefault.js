@@ -71,6 +71,7 @@ function pageLoadDefault(){
 			ctxHistorical.canvas.height = 25;
 			var chartHistorical = new Chart(ctxHistorical , {
 				responsive: 'true',
+				showTooltips: 'true',
 				type: 'line',
 				data: { 
 					labels: labelsHistorical,
@@ -78,7 +79,7 @@ function pageLoadDefault(){
 						label: 'Temperature (F)',
 						data: dataHistorical
 					},{
-						label: 'Sky Conditions:',
+						label: 'Sky Conditions',
 						data: dataHistoricalSky
 					}]	
 				},	
