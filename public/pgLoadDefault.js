@@ -40,13 +40,7 @@ function pageLoadDefault(){
 				labelsForecast[l] = (data.forecast.simpleforecast.forecastday[l].date.month + "/" + data.forecast.simpleforecast.forecastday[l].date.day + "/" + data.forecast.simpleforecast.forecastday[l].date.year);
 			}
 			
-			for(var l=0; l<24; l++){
 			
-				test1 = test1 + "{x: " + data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min ", " +
-								 "y: " + data.history.observations[l].tempi ", " +
-								 "indexLabel: " + data.history.observations[l].conds + "},"
-			
-			}
 			
 				
 			// Generate graph data
