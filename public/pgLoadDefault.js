@@ -87,7 +87,13 @@ function pageLoadDefault(){
 							display: true
 						}],
 						yAxes: [{
-							display: true
+							type:"linear",
+							display:true,
+							position:"left",
+							id: "y-axis-1",
+							labels:{
+								show:true
+							}
 						},{
 							type:"linear",
 							display:true,
@@ -100,7 +106,6 @@ function pageLoadDefault(){
 					}
 				}
 			});
-			ctxHistorical.fillText('6513603202',500,500);
 		}
 	})
 }		
