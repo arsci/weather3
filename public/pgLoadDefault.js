@@ -62,6 +62,9 @@ function pageLoadDefault(){
 			var chartHistorical = new Chart(ctxHistorical , {
 				responsive: 'true',
 				type: 'line',
+				tooltips:{
+					mode: 'label'
+				},
 				data: { 
 					labels: labelsHistorical,
 					datasets:[{
