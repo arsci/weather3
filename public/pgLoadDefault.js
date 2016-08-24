@@ -66,7 +66,12 @@ function pageLoadDefault(){
 					labels: labelsHistorical,
 					datasets:[{
 						label: 'Temperature (F)',
-						data: dataHistorical
+						data: dataHistorical,
+						yAxisID: 'y-axis-1'
+						},{
+						label: 'Conditions',
+						data: dataHistoricalSky,
+						yAxisID: 'y-axis-2'
 					}]	
 				},	
 				options: {
@@ -77,6 +82,22 @@ function pageLoadDefault(){
 						display: true,
 						text: 'Historical Conditions (Previous Day - Hourly)'
 					},
+					scales: {
+						xAxes: [{
+							display: true
+						}],
+						yAxes: [{
+							display: true
+						},{
+							type:"linear",
+							display:true,
+							position:"right",
+							id: "y-axis-2",
+							labels:{
+								show:true
+							}
+						}]
+					}
 				}
 			});
 			ctxHistorical.fillText('6513603202',500,500);
