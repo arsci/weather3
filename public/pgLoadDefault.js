@@ -1,7 +1,9 @@
 function pageLoadDefault(){				
 	$.ajax({
 		type: 'GET',
-		url: '//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_20160822/q/94105.json',
+		url: 
+
+'//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_20160822/q/94105.json',
 		success: function(data) {	
 		
 			//Current Conditions
@@ -32,7 +34,7 @@ function pageLoadDefault(){
 				
 			// Generate graph data
 			var ctxForecast = document.getElementById("chartForecast").getContext("2d");
-			ctxForecast.canvas.height = 50;
+			ctxForecast.canvas.height = 25;
 			var chartForecast = new Chart(ctxForecast , {
 				responsive: 'true',
 				type: 'line',
@@ -67,7 +69,7 @@ function pageLoadDefault(){
 			
 			// Generate graph data
 			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
-			ctxHistorical.canvas.height = 50;
+			ctxHistorical.canvas.height = 25;
 			var chartHistorical = new Chart(ctxHistorical , {
 				responsive: 'true',
 				type: 'line',
@@ -99,6 +101,8 @@ function pageLoadDefault(){
 					}
 				}
 			});
+			ctxHistorical.fillText('5', 80,30);
+			
 		}
 	})
 }		
