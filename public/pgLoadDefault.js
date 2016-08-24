@@ -1,4 +1,4 @@
-function pageLoadDefault(){		
+function pageLoadDefault(){	
 
 	var currentDate = new Date();
 	var yr = currentDate.getFullYear();
@@ -10,11 +10,9 @@ function pageLoadDefault(){
 	
 	var urlAPI = "//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/" + yr + mo + da + "/q/94105.json";
 	
-	$("#url").text(urlAPI);
-	
 	$.ajax({
 		type: 'GET',
-		url: '',
+		url: '//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_20160822/q/94105.json',
 		success: function(data) {	
 		
 			//Current Conditions
@@ -36,7 +34,7 @@ function pageLoadDefault(){
 				labelsForecast[l] = (data.forecast.simpleforecast.forecastday[l].date.month + "/" + data.forecast.simpleforecast.forecastday[l].date.day + "/" + data.forecast.simpleforecast.forecastday[l].date.year);
 			}
 			
-			for(var l=0; l<27; l++){
+			for(var l=0; l<24; l++){
 				dataHistorical[l] = (data.history.observations[l].tempi);
 				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
 			}
