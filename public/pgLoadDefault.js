@@ -61,7 +61,7 @@ function pageLoadDefault(){
 						text: '10 Day Forecast Conditions'
 					},
 					scales: {
-						xAxes: [{
+						xAxis: [{
 							labelAngle: -45
 						}]
 					}
@@ -90,7 +90,7 @@ function pageLoadDefault(){
 						text: 'Historical Conditions (Previous Day - Hourly)'
 					},
 					scales: {
-						xAxes: [{
+						xAxis: [{
 							labelAngle: -45
 						}]
 					}
