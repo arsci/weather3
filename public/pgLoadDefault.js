@@ -20,6 +20,7 @@ function pageLoadDefault(){
 			var labelsHistorical = [];
 			var dataHistorical = [];
 			var dataHistoricalSky = [];
+			var tonumSky = [];
 			
 			for(var l=0; l<10; l++){
 				dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
@@ -30,6 +31,7 @@ function pageLoadDefault(){
 				dataHistorical[l] = (data.history.observations[l].tempi);
 				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
 				dataHistoricalSky[l] = (data.history.observations[l].conds);
+				tonumSky[l] = Number(data.history.observations[l].conds);
 			}
 				
 			// Generate graph data
