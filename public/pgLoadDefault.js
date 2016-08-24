@@ -67,12 +67,12 @@ function pageLoadDefault(){
 				data: { 
 					labels: labelsHistorical,
 					datasets:[{
-						type: 'line'
+						type: 'line',
 						label: 'Temperature (F)',
 						data: dataHistorical,
 						yAxisID: 'y-axis-1'
 						},{
-						type: 'bar'
+						type: 'bar',
 						label: 'Conditions',
 						data: dataHistoricalSky,
 						yAxisID: 'y-axis-2'
