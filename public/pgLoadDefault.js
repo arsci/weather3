@@ -60,6 +60,11 @@ function pageLoadDefault(){
 						display: true,
 						text: '10 Day Forecast Conditions'
 					},
+					scales: {
+						xAxes: [{
+							labelAngle: -45
+						}]
+					}
 				}
 			});
 			
@@ -84,6 +89,11 @@ function pageLoadDefault(){
 						display: true,
 						text: 'Historical Conditions (Previous Day - Hourly)'
 					},
+					scales: {
+						xAxes: [{
+							labelAngle: -45
+						}]
+					}
 				}
 			});
 		}
