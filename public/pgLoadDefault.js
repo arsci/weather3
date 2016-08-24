@@ -59,9 +59,9 @@ function pageLoadDefault(){
 			// Generate graph data
 			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
 			ctxHistorical.canvas.height = 25;
+			ctxHistorical.fillText('TEST',0,0);
 			var chartHistorical = new Chart(ctxHistorical , {
 				responsive: 'true',
-				multiTooltipTemplate: "<%=datasetLabel%> : <%= value %>",
 				tooltips:{
 					mode: 'label'
 				},
@@ -114,6 +114,7 @@ function pageLoadDefault(){
 					}
 				}
 			});
+			ctxHistorical.fillText('TEST',0,0);
 		}
 	})
 }		
