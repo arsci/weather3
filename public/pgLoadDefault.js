@@ -30,17 +30,16 @@ function pageLoadDefault(){
 			var dataHistorical = [];
 			var dataHistoricalSky = [];
 			
-			var test1;
-			var test2;
-			var test3;
-			var test4;
-			
 			for(var l=0; l<10; l++){
 				dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
 				labelsForecast[l] = (data.forecast.simpleforecast.forecastday[l].date.month + "/" + data.forecast.simpleforecast.forecastday[l].date.day + "/" + data.forecast.simpleforecast.forecastday[l].date.year);
 			}
 			
-			
+			for(var l=0; l<24; l++){
+				dataHistorical[l] = (data.history.observations[l].tempi);
+				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
+				labelsHistoricalSky[l] = (data.history.observations[l].conds);
+			}
 			
 				
 			// Generate graph data
@@ -71,29 +70,11 @@ function pageLoadDefault(){
 			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
 			ctxHistorical.canvas.height = 25;
 			var chartHistorical = new Chart(ctxHistorical , {
-				multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>" ,
 				responsive: 'true',
-				showTooltips: 'true',
 				type: 'line',
 				data: { 
 					labels: labelsHistorical,
-					dataPoints: [       
-						{ x: new Date(2012, 06, 18), y: 2000000 }, 
-						{ x: new Date(2012, 06, 23), y: 6000000 }, 
-						{ x: new Date(2012, 07, 1), y: 10000000, indexLabel:"10m"}, 
-						{ x: new Date(2012, 07, 11), y: 21000000 }, 
-						{ x: new Date(2012, 07, 23), y: 50000000 }, 
-						{ x: new Date(2012, 07, 31), y: 75000000  }, 
-						{ x: new Date(2012, 08, 04), y: 100000000, indexLabel:"100m" },
-						{ x: new Date(2012, 08, 10), y: 125000000 },
-						{ x: new Date(2012, 08, 13), y: 150000000},	
-						{ x: new Date(2012, 08, 16), y: 175000000},	
-						{ x: new Date(2012, 08, 18), y: 200000000, indexLabel:"200m"},	
-						{ x: new Date(2012, 08, 21), y: 225000000},	
-						{ x: new Date(2012, 08, 24), y: 250000000},	
-						{ x: new Date(2012, 08, 26), y: 275000000},	
-						{ x: new Date(2012, 08, 28), y: 302000000, indexLabel:"300m"}	
-					]	
+					datasets: dataHistorical
 				},	
 				options: {
 					hover: {
@@ -105,6 +86,8 @@ function pageLoadDefault(){
 					}
 				}
 			});
+			
+			ctxHistorical.fillText('5', 80,30);
 		}
 	})
 }		
