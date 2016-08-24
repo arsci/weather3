@@ -59,9 +59,6 @@ function pageLoadDefault(){
 					title: {
 						display: true,
 						text: '10 Day Forecast Conditions'
-					},
-					axisX: {
-						labelAngle: '45'
 					}
 				}
 			});
@@ -77,6 +74,9 @@ function pageLoadDefault(){
 					datasets:[{
 						label: 'Temperature (F)',
 						data: dataHistorical
+					},{
+						labels: 'Condition',
+						data: dataHistorical
 					}]	
 				},	
 				options: {
@@ -86,14 +86,6 @@ function pageLoadDefault(){
 					title: {
 						display: true,
 						text: 'Historical Conditions (Previous Day - Hourly)'
-					},
-					scales: {
-						xAxes:[{
-							ticks:{
-								labelAngle: 45
-							},
-							labelAngle: 45
-						}]
 					}
 				}
 			});
