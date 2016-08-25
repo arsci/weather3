@@ -41,11 +41,11 @@ function pageLoadDefault(){
 				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
 			}
 			
-			histMax = Math.max.apply(Math, dataHistorical) + 3;
-			histMin = Math.min.apply(Math, dataHistorical) - 3;
+			histMax = Math.round(Math.max.apply(Math, dataHistorical) + 2);
+			histMin = Math.round(Math.min.apply(Math, dataHistorical) - 2);
 			
-			foreMax = Math.max.apply(Math, dataForecast) + 3;
-			foreMin = Math.min.apply(Math, dataForecast) - 3;
+			foreMax = Math.round(Math.max.apply(Math, dataForecast) + 2);
+			foreMin = Math.round(Math.min.apply(Math, dataForecast) - 2);
 				
 			// Generate graph data
 			var ctxForecast = document.getElementById("chartForecast").getContext("2d");
