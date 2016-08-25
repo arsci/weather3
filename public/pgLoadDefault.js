@@ -57,7 +57,7 @@ function pageLoadDefault(){
 			var toHTML = "<table width=100%><tr><th width=4%>Time:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<th width=8%>" + labelsHistorical[l] + "</th>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Tmp:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<th width=8%>" + dataHistorical[l] + "</th>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistorical[l] + "</td>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Sky:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Pres:</th>";
