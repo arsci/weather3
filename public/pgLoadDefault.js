@@ -1,4 +1,4 @@
-function pageLoadDefault(){			
+window.onload = function pageLoadDefault(){			
 
 	var yesterayDate = new Date(new Date() - 86400000);
 	var yr = yesterayDate.getFullYear();
