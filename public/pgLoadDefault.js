@@ -55,6 +55,8 @@ function pageLoadDefault(){
 			
 			
 			var toHTML = "<table><tr>";
+			for(var l=0; l<24; l++) toHTML = toHTML + "<th>" + labelHistorical[l] + "</th>";
+			toHTML = toHTML + "</tr><tr>";
 			for(var l=0; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalSky[l] + "</td>";
 			toHTML = toHTML + "</tr><tr>";
 			for(var l=0; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalPre[l] + "</td>";
