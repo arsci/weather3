@@ -8,7 +8,9 @@ function pageLoadDefault(){
 	if(Number(mo) < 10) mo = "0" + mo;
 	if(Number(da) < 10) da = "0" + da;
 	
-	var urlAPI = "//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_" + yr + mo + da + "/q/94105.json";
+	var urlAPI = "//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_" 
+				 + yr + mo + da + 
+				 "/q/94105.json";
 
 	$.ajax({
 		type: 'GET',
@@ -48,8 +50,12 @@ function pageLoadDefault(){
 			
 			for(var l=0; l<10; l++){
 				dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
-				labelsForecast[l] = (data.forecast.simpleforecast.forecastday[l].date.month + "/" + data.forecast.simpleforecast.forecastday[l].date.day + "/" + data.forecast.simpleforecast.forecastday[l].date.year);
-				labelsForecastL[l] = (data.forecast.simpleforecast.forecastday[l].date.weekday_short + " " + data.forecast.simpleforecast.forecastday[l].date.monthname_short + " " + data.forecast.simpleforecast.forecastday[l].date.day);
+				labelsForecast[l] = (data.forecast.simpleforecast.forecastday[l].date.month + "/" + 
+									 data.forecast.simpleforecast.forecastday[l].date.day + "/" + 
+									 data.forecast.simpleforecast.forecastday[l].date.year);
+				labelsForecastL[l] = (data.forecast.simpleforecast.forecastday[l].date.weekday_short + " " + 
+									  data.forecast.simpleforecast.forecastday[l].date.monthname_short + " " + 
+									  data.forecast.simpleforecast.forecastday[l].date.day);
 				dataForecastSky[l] = (data.forecast.simpleforecast.forecastday[l].conditions);
 			}
 			
@@ -61,7 +67,8 @@ function pageLoadDefault(){
 					}
 				}
 				dataHistorical[l] = (data.history.observations[n].tempi);
-				labelsHistorical[l] = (data.history.observations[n].date.hour + ":" + data.history.observations[n].date.min);
+				labelsHistorical[l] = (data.history.observations[n].date.hour + ":" + 
+									   data.history.observations[n].date.min);
 				dataHistoricalSky[l] = (data.history.observations[n].conds);
 				dataHistoricalPre[l] = (data.history.observations[n].pressurei) + ' inHg';
 				dataHistoricalHum[l] = (data.history.observations[n].hum) + '%';
