@@ -30,6 +30,13 @@ function pageLoadDefault(){
 			var dataHistorical = [];
 			var histMax, histMin;
 			var foreMax, foreMin;
+			var dataHistoricalSky = [];
+			var dataHistoricalPre = [];
+			var dataHistoricalHum = [];
+			var dataHistoricalVis = [];
+			
+			var toHTML;
+			
 			
 			for(var l=0; l<10; l++){
 				dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
@@ -39,7 +46,23 @@ function pageLoadDefault(){
 			for(var l=0; l<24; l++){
 				dataHistorical[l] = (data.history.observations[l].tempi);
 				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
+				dataHistoricalSky[l] = (data.history.observations[l].conds);
+				dataHistoricalPre[l] = (data.history.observations[l].pressurei);
+				dataHistoricalHum[l] = (data.history.observations[l].hum) + '%';
+				dataHistoricalVis[l] = (data.history.observations[l].vism);			
 			}
+			
+			document.getElementById("dataTable").innerHTML = toHTML;
+			
+			var toHTML = "<table><tr>";
+			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalSky[l] + "</td>";
+			toHTML = toHTML + "</tr><tr>"
+			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalPre[l] + "</td>";
+			toHTML = toHTML + "</tr><tr>"
+			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalHum[l] + "</td>"; 
+			toHTML = toHTML + "</tr><tr>"
+			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalVis[l] + "</td>";
+			toHTML = toHTML + "</tr></table>"
 			
 			histMax = (Math.round(Math.max.apply(Math, dataHistorical)/2) * 2) + 2;
 			histMin = (Math.round(Math.min.apply(Math, dataHistorical)/2) * 2) - 2;
