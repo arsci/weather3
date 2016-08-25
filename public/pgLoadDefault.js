@@ -49,15 +49,15 @@ function pageLoadDefault(){
 				dataHistorical[l] = (data.history.observations[l].tempi);
 				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
 				dataHistoricalSky[l] = (data.history.observations[l].conds);
-				dataHistoricalPre[l] = (data.history.observations[l].pressurei);
+				dataHistoricalPre[l] = (data.history.observations[l].pressurei) + 'inHg';
 				dataHistoricalHum[l] = (data.history.observations[l].hum) + '%';
-				dataHistoricalVis[l] = (data.history.observations[l].vism);			
+				dataHistoricalVis[l] = (data.history.observations[l].vism) + 'mi';			
 			}
 			
 			var toHTML = "<table width=100%><tr><th width=4%>Time:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<th width=8%>" + labelsHistorical[l] + "</th>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Tmp:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistorical[l] + "</td>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Sky:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Pres:</th>";
@@ -71,7 +71,7 @@ function pageLoadDefault(){
 			toHTML = toHTML + "<br><table width=100%><tr><th width=4%>Time:</th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<th width=8%>" + labelsHistorical[l] + "</th>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Tmp:</th>";
-			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistorical[l] + "</td>";
+			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Sky:</th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Pres:</th>";
@@ -87,7 +87,7 @@ function pageLoadDefault(){
 			var toHTMLForecast = "<table width=100%><tr><th width=10%>Date:</th>";
 			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + labelsForecast[l] + "</th>";
 			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Tmp:</th>";
-			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + dataForecast[l] + "&#8457;</th>";
+			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<td width=9%>" + dataForecast[l] + "&#8457;</td>";
 			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Sky:</th>";
 			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<td width=9%>" + dataForecastSky[l] + "</td>";
 			toHTMLForecast = toHTMLForecast + "</tr></table>";
