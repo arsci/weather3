@@ -16,6 +16,7 @@ function pageLoadDefault(){
 		success: function(data) {	
 		
 			var labelsForecast = [];
+			var labelsForecastL = [];
 			var dataForecast = [];
 			var dataForecastSky = [];
 			
@@ -48,6 +49,7 @@ function pageLoadDefault(){
 			for(var l=0; l<10; l++){
 				dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
 				labelsForecast[l] = (data.forecast.simpleforecast.forecastday[l].date.month + "/" + data.forecast.simpleforecast.forecastday[l].date.day + "/" + data.forecast.simpleforecast.forecastday[l].date.year);
+				labelsForecastL[l] = (data.forecast.simpleforecast.forecastday[l].date.weekday_short + " " + data.forecast.simpleforecast.forecastday[l].date.monthname_short + " " + data.forecast.simpleforecast.forecastday[l].date.day + ", " + data.forecast.simpleforecast.forecastday[l].date.year);
 				dataForecastSky[l] = (data.forecast.simpleforecast.forecastday[l].conditions);
 			}
 			
