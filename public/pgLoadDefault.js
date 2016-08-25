@@ -26,15 +26,15 @@ function pageLoadDefault(){
 			var dataHistoricalHum = [];
 			var dataHistoricalVis = [];
 			
-			var histMax, histMin;
 			var foreMax, foreMin;
+			var histMax, histMin;
 			
-			var toHTML;
 			var toHTMLForecast;
+			var toHTMLHistorical;
 			
-			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
 			var ctxForecast = document.getElementById("chartForecast").getContext("2d");
-		
+			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
+			
 			document.getElementById("location").innerHTML = data.current_observation.observation_location.full;
 			document.getElementById("temp_f").innerHTML = data.current_observation.temperature_string;
 			document.getElementById("visibility_mi").innerHTML =data.current_observation.visibility_mi + 'mi';
@@ -58,34 +58,6 @@ function pageLoadDefault(){
 				dataHistoricalVis[l] = (data.history.observations[l].vism) + 'mi';			
 			}
 			
-			toHTML = "<table width=100%><tr><th width=4%>Time:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<th width=8%>" + labelsHistorical[l] + "</th>";
-			toHTML = toHTML + "</tr><tr><th width=4%>Tmp:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
-			toHTML = toHTML + "</tr><tr><th width=4%>Sky:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=4%>Pres:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalPre[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=4%>Hum:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalHum[l] + "</td>"; 
-			toHTML = toHTML + "</tr><tr><th width=4%>Visb:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalVis[l] + "</td>";
-			toHTML = toHTML + "</tr></table>";
-			
-			toHTML = toHTML + "<br><table width=100%><tr><th width=4%>Time:</th>";
-			for(var l=12; l<24; l++) toHTML = toHTML + "<th width=8%>" + labelsHistorical[l] + "</th>";
-			toHTML = toHTML + "</tr><tr><th width=4%>Tmp:</th>";
-			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
-			toHTML = toHTML + "</tr><tr><th width=4%>Sky:</th>";
-			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=4%>Pres:</th>";
-			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalPre[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=4%>Hum:</th>";
-			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalHum[l] + "</td>"; 
-			toHTML = toHTML + "</tr><tr><th width=4%>Visb:</th>";
-			for(var l=12; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalVis[l] + "</td>";
-			toHTML = toHTML + "</tr></table>";
-			
 			toHTMLForecast = "<table width=100%><tr><th width=10%>Date:</th>";
 			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + labelsForecast[l] + "</th>";
 			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Tmp:</th>";
@@ -94,15 +66,43 @@ function pageLoadDefault(){
 			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<td width=9%>" + dataForecastSky[l] + "</td>";
 			toHTMLForecast = toHTMLForecast + "</tr></table>";
 			
-			document.getElementById("dataTable").innerHTML = toHTML;
-			document.getElementById("dataTable2").innerHTML = toHTMLForecast;
+			toHTMLHistorical = "<table width=100%><tr><th width=4%>Time:</th>";
+			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<th width=8%>" + labelsHistorical[l] + "</th>";
+			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Tmp:</th>";
+			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
+			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Sky:</th>";
+			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
+			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Pres:</th>";
+			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalPre[l] + "</td>";
+			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Hum:</th>";
+			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalHum[l] + "</td>"; 
+			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Visb:</th>";
+			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalVis[l] + "</td>";
+			toHTMLHistorical = toHTMLHistorical + "</tr></table>";
 			
-			histMax = (Math.round(Math.max.apply(Math, dataHistorical)/2) * 2) + 2;
-			histMin = (Math.round(Math.min.apply(Math, dataHistorical)/2) * 2) - 2;
+			toHTMLHistorical = toHTMLHistorical + "<br><table width=100%><tr><th width=4%>Time:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<th width=8%>" + labelsHistorical[l] + "</th>";
+			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Tmp:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
+			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Sky:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
+			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Pres:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalPre[l] + "</td>";
+			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Hum:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalHum[l] + "</td>"; 
+			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Visb:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<td>" + dataHistoricalVis[l] + "</td>";
+			toHTMLHistorical = toHTMLHistorical + "</tr></table>";
+			
+			document.getElementById("dataTableForecast").innerHTML = toHTMLForecast;
+			document.getElementById("dataTableHistorical").innerHTML = toHTMLHistorical;
 			
 			foreMax = (Math.round(Math.max.apply(Math, dataForecast)/2) * 2) + 2;
 			foreMin = (Math.round(Math.min.apply(Math, dataForecast)/2) * 2) - 2;
 				
+			histMax = (Math.round(Math.max.apply(Math, dataHistorical)/2) * 2) + 2;
+			histMin = (Math.round(Math.min.apply(Math, dataHistorical)/2) * 2) - 2;
+			
 			ctxForecast.canvas.height = 25;
 			var chartForecast = new Chart(ctxForecast , {
 				responsive: 'true',
