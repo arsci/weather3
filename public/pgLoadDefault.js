@@ -67,7 +67,7 @@ function pageLoadDefault(){
 					title: {
 						display: true,
 						text: '10 Day Forecast Conditions'
-					}
+					},
 					scales: {
 						yAxes: [{
 							ticks: {
@@ -99,7 +99,7 @@ function pageLoadDefault(){
 					title: {
 						display: true,
 						text: 'Historical Conditions (Previous Day - Hourly)'
-					}
+					},
 					scales: {
 						yAxes: [{
 							ticks: {
