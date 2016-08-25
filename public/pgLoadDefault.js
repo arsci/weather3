@@ -53,7 +53,7 @@ function pageLoadDefault(){
 			
 			for(var l=0; l<m; l++){
 				if(l>0){
-					if(data.history.observations[n].tempi.substring(0,1) == data.history.observations[n-1].tempi.substring(0,1) {
+					if(data.history.observations[n].tempi.substring(0,1) == data.history.observations[n-1].tempi.substring(0,1)) {
 						m++;
 						n++;
 					}
