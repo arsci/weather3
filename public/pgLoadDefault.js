@@ -84,20 +84,20 @@ function pageLoadDefault(){
 			
 			document.getElementById("dataTable").innerHTML = toHTML;
 			
-			var toHTMLForecast = "<table width=100%><tr><th width=4%>Time:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTMLForecast + "<th width=8%>" + labelsForecast[l] + "</th>";
-			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=4%>Tmp:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTMLForecast + "<th width=8%>" + dataForecast[l] + "</th>";
-			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=4%>Sky:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTMLForecast + "<td width=8%>" + dataForecastSky[l] + "</td>";
+			var toHTMLForecast = "<table width=100%><tr><th width=10%>Date:</th>";
+			for(var l=0; l<12; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + labelsForecast[l] + "</th>";
+			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Tmp:</th>";
+			for(var l=0; l<12; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + dataForecast[l] + "</th>";
+			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Sky:</th>";
+			for(var l=0; l<12; l++) toHTMLForecast = toHTMLForecast + "<td width=9%>" + dataForecastSky[l] + "</td>";
 			toHTMLForecast = toHTMLForecast + "</tr></table>";
 			
-			toHTMLForecast = toHTMLForecast + "<br><table width=100%><tr><th width=4%>Time:</th>";
-			for(var l=12; l<24; l++) toHTMLForecast = toHTMLForecast + "<th width=8%>" + labelsHistorical[l] + "</th>";
-			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=4%>Tmp:</th>";
-			for(var l=12; l<24; l++) toHTMLForecast = toHTMLForecast + "<th width=8%>" + dataHistorical[l] + "</th>";
-			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=4%>Sky:</th>";
-			for(var l=12; l<24; l++) toHTMLForecast = toHTMLForecast + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
+			toHTMLForecast = toHTMLForecast + "<br><table width=100%><tr><th width=10%>Date:</th>";
+			for(var l=12; l<24; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + labelsForecast[l] + "</th>";
+			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Tmp:</th>";
+			for(var l=12; l<24; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + dataForecast[l] + "</th>";
+			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Sky:</th>";
+			for(var l=12; l<24; l++) toHTMLForecast = toHTMLForecast + "<td width=9%>" + dataForecastSky[l] + "</td>";
 			toHTMLForecast = toHTMLForecast + "</tr></table>";
 			
 			document.getElementById("dataTable2").innerHTML = toHTMLForecast;
