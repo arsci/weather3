@@ -54,27 +54,27 @@ function pageLoadDefault(){
 			
 			
 			
-			var toHTML = "<table><tr><th width=5%>Time: </th>";
+			var toHTML = "<table width=100%><tr><th width=5%>Time:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<th width=5%>" + labelsHistorical[l] + "</th>";
-			toHTML = toHTML + "</tr><tr><th width=5%>Sky:  </th>";
+			toHTML = toHTML + "</tr><tr><th width=5%>Sky:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<td>" + dataHistoricalSky[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=5%>Pres: </th>";
+			toHTML = toHTML + "</tr><tr><th width=5%>Pres:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<td>" + dataHistoricalPre[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=5%>Hum:  </th>";
+			toHTML = toHTML + "</tr><tr><th width=5%>Hum:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<td>" + dataHistoricalHum[l] + "</td>"; 
-			toHTML = toHTML + "</tr><tr><th width=5%>Visb: </th>";
+			toHTML = toHTML + "</tr><tr><th width=5%>Visb:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<td>" + dataHistoricalVis[l] + "</td>";
 			toHTML = toHTML + "</tr></table>";
 			
-			toHTML = toHTML + "<br><table><tr><th width=5%>Time: </th>";
+			toHTML = toHTML + "<br><table width=100%><tr><th width=5%>Time:</th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<th>" + labelsHistorical[l] + "</th>";
-			toHTML = toHTML + "</tr><tr><th width=5%>Sky:  </th>";
+			toHTML = toHTML + "</tr><tr><th width=5%>Sky:</th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalSky[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=5%>Pres: </th>";
+			toHTML = toHTML + "</tr><tr><th width=5%>Pres:</th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalPre[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=5%>Hum:  </th>";
+			toHTML = toHTML + "</tr><tr><th width=5%>Hum:</th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalHum[l] + "</td>"; 
-			toHTML = toHTML + "</tr><tr><th width=5%>Visb: </th>";
+			toHTML = toHTML + "</tr><tr><th width=5%>Visb:</th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalVis[l] + "</td>";
 			toHTML = toHTML + "</tr></table>";
 			
