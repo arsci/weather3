@@ -1,4 +1,4 @@
-window.onload = function pageLoadDefault(){			
+function pageLoadDefault(){			
 
 	var yesterayDate = new Date(new Date() - 86400000);
 	var yr = yesterayDate.getFullYear();
@@ -29,8 +29,8 @@ window.onload = function pageLoadDefault(){
 			var foreMax, foreMin;
 			var histMax, histMin;
 			
-			var toHTMLForecast = "";
-			var toHTMLHistorical = "";
+			var toHTMLForecast;
+			var toHTMLHistorical;
 			
 			var ctxForecast = document.getElementById("chartForecast").getContext("2d");
 			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
