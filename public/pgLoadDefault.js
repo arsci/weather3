@@ -40,8 +40,8 @@ function pageLoadDefault(){
 			
 			document.getElementById("location").innerHTML = data.current_observation.observation_location.full;
 			document.getElementById("temp_f").innerHTML = data.current_observation.temperature_string;
-			document.getElementById("visibility_mi").innerHTML =data.current_observation.visibility_mi + 'mi';
-			document.getElementById("pressure_in").innerHTML = data.current_observation.pressure_in + 'inHg';
+			document.getElementById("visibility_mi").innerHTML =data.current_observation.visibility_mi + ' mi';
+			document.getElementById("pressure_in").innerHTML = data.current_observation.pressure_in + ' inHg';
 			document.getElementById("observation_time").innerHTML = data.current_observation.observation_time;
 			document.getElementById("relative_humidity").innerHTML = data.current_observation.relative_humidity;
 			document.getElementById("wind_string").innerHTML = data.current_observation.wind_string;
@@ -63,9 +63,9 @@ function pageLoadDefault(){
 				dataHistorical[l] = (data.history.observations[n].tempi);
 				labelsHistorical[l] = (data.history.observations[n].date.hour + ":" + data.history.observations[n].date.min);
 				dataHistoricalSky[l] = (data.history.observations[n].conds);
-				dataHistoricalPre[l] = (data.history.observations[n].pressurei) + 'inHg';
+				dataHistoricalPre[l] = (data.history.observations[n].pressurei) + ' inHg';
 				dataHistoricalHum[l] = (data.history.observations[n].hum) + '%';
-				dataHistoricalVis[l] = (data.history.observations[n].vism) + 'mi';		
+				dataHistoricalVis[l] = (data.history.observations[n].vism) + ' mi';		
 				n++
 			}
 			
