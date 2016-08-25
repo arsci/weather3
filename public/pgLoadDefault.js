@@ -87,7 +87,7 @@ function pageLoadDefault(){
 			var toHTMLForecast = "<table width=100%><tr><th width=10%>Date:</th>";
 			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + labelsForecast[l] + "</th>";
 			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Tmp:</th>";
-			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + dataForecast[l] + "</th>";
+			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + dataForecast[l] + "&#8457;</th>";
 			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Sky:</th>";
 			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<td width=9%>" + dataForecastSky[l] + "</td>";
 			toHTMLForecast = toHTMLForecast + "</tr></table>";
