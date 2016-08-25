@@ -54,7 +54,7 @@ function pageLoadDefault(){
 			
 			
 			
-			var toHTML = "<table><tr><th>Time: </th>";
+			var toHTML = "<table><tr><th width=5%>Time: </th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<th width=5%>" + labelsHistorical[l] + "</th>";
 			toHTML = toHTML + "</tr><tr><th width=5%>Sky:  </th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<td>" + dataHistoricalSky[l] + "</td>";
@@ -66,7 +66,7 @@ function pageLoadDefault(){
 			for(var l=0; l<12; l++) toHTML = toHTML + "<td>" + dataHistoricalVis[l] + "</td>";
 			toHTML = toHTML + "</tr></table>";
 			
-			toHTML = toHTML + "<br><table><tr><th>Time: </th>";
+			toHTML = toHTML + "<br><table><tr><th width=5%>Time: </th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<th>" + labelsHistorical[l] + "</th>";
 			toHTML = toHTML + "</tr><tr><th width=5%>Sky:  </th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalSky[l] + "</td>";
