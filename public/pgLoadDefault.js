@@ -15,29 +15,33 @@ function pageLoadDefault(){
 		url: urlAPI,
 		success: function(data) {	
 		
-			//Current Conditions
-			$("#location").text(data.current_observation.observation_location.full);
-			$("#temp_f").text(data.current_observation.temperature_string);
-			$("#visibility_mi").text(data.current_observation.visibility_mi + 'mi');
-			$("#pressure_in").text(data.current_observation.pressure_in + 'inHg');
-			$("#observation_time").text(data.current_observation.observation_time);
-			$("#relative_humidity").text(data.current_observation.relative_humidity);
-			$("#wind_string").text(data.current_observation.wind_string);
-				
 			var labelsForecast = [];
 			var dataForecast = [];
+			var dataForecastSky = [];
+			
 			var labelsHistorical = [];
 			var dataHistorical = [];
-			var histMax, histMin;
-			var foreMax, foreMin;
 			var dataHistoricalSky = [];
 			var dataHistoricalPre = [];
 			var dataHistoricalHum = [];
 			var dataHistoricalVis = [];
-			var dataForecastSky = [];
+			
+			var histMax, histMin;
+			var foreMax, foreMin;
 			
 			var toHTML;
 			var toHTMLForecast;
+			
+			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
+			var ctxForecast = document.getElementById("chartForecast").getContext("2d");
+		
+			document.getElementById("location").innerHTML = data.current_observation.observation_location.full;
+			document.getElementById("temp_f").innerHTML = data.current_observation.temperature_string;
+			document.getElementById("visibility_mi").innerHTML =data.current_observation.visibility_mi + 'mi';
+			document.getElementById("pressure_in").innerHTML = data.current_observation.pressure_in + 'inHg';
+			document.getElementById("observation_time").innerHTML = data.current_observation.observation_time;
+			document.getElementById("relative_humidity").innerHTML = data.current_observation.relative_humidity;
+			document.getElementById("wind_string").innerHTML = data.current_observation.wind_string;
 			
 			for(var l=0; l<10; l++){
 				dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
@@ -54,7 +58,7 @@ function pageLoadDefault(){
 				dataHistoricalVis[l] = (data.history.observations[l].vism) + 'mi';			
 			}
 			
-			var toHTML = "<table width=100%><tr><th width=4%>Time:</th>";
+			toHTML = "<table width=100%><tr><th width=4%>Time:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<th width=8%>" + labelsHistorical[l] + "</th>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Tmp:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
@@ -82,9 +86,7 @@ function pageLoadDefault(){
 			for(var l=12; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalVis[l] + "</td>";
 			toHTML = toHTML + "</tr></table>";
 			
-			document.getElementById("dataTable").innerHTML = toHTML;
-			
-			var toHTMLForecast = "<table width=100%><tr><th width=10%>Date:</th>";
+			toHTMLForecast = "<table width=100%><tr><th width=10%>Date:</th>";
 			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + labelsForecast[l] + "</th>";
 			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Tmp:</th>";
 			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<td width=9%>" + dataForecast[l] + "&#8457;</td>";
@@ -92,6 +94,7 @@ function pageLoadDefault(){
 			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<td width=9%>" + dataForecastSky[l] + "</td>";
 			toHTMLForecast = toHTMLForecast + "</tr></table>";
 			
+			document.getElementById("dataTable").innerHTML = toHTML;
 			document.getElementById("dataTable2").innerHTML = toHTMLForecast;
 			
 			histMax = (Math.round(Math.max.apply(Math, dataHistorical)/2) * 2) + 2;
@@ -100,8 +103,6 @@ function pageLoadDefault(){
 			foreMax = (Math.round(Math.max.apply(Math, dataForecast)/2) * 2) + 2;
 			foreMin = (Math.round(Math.min.apply(Math, dataForecast)/2) * 2) - 2;
 				
-			// Generate graph data
-			var ctxForecast = document.getElementById("chartForecast").getContext("2d");
 			ctxForecast.canvas.height = 25;
 			var chartForecast = new Chart(ctxForecast , {
 				responsive: 'true',
@@ -131,9 +132,7 @@ function pageLoadDefault(){
 					}
 				}			
 			});
-			
-			// Generate graph data
-			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
+
 			ctxHistorical.canvas.height = 25;
 			var chartHistorical = new Chart(ctxHistorical , {
 				responsive: 'true',
