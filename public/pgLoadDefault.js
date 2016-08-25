@@ -77,7 +77,7 @@ function pageLoadDefault(){
 			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<td width=9%>" + dataForecastSky[l] + "</td>";
 			toHTMLForecast = toHTMLForecast + "</tr></table>";
 			
-			toHTMLHistorical = "<table width=100%><tr><th width=4%>Time:</th>";
+			toHTMLHistorical = "<br>AM<br><table width=100%><tr><th width=4%>Time:</th>";
 			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<th width=8%>" + labelsHistorical[l] + "</th>";
 			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Tmp:</th>";
 			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
@@ -91,7 +91,7 @@ function pageLoadDefault(){
 			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalVis[l] + "</td>";
 			toHTMLHistorical = toHTMLHistorical + "</tr></table>";
 			
-			toHTMLHistorical = toHTMLHistorical + "<br><table width=100%><tr><th width=4%>Time:</th>";
+			toHTMLHistorical = toHTMLHistorical + "<br>PM<br><table width=100%><tr><th width=4%>Time:</th>";
 			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<th width=8%>" + labelsHistorical[l] + "</th>";
 			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Tmp:</th>";
 			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
