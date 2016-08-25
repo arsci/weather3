@@ -53,7 +53,7 @@ function pageLoadDefault(){
 				dataForecastSky[l] = (data.forecast.simpleforecast.forecastday[l].conditions);
 			}
 			
-			for(var l=0; l<m; l++){
+			for(var l=0; n<m; l++){
 				if(l>0){
 				
 					ck1 = data.history.observations[n].date.hour;
