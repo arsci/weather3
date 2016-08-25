@@ -28,6 +28,8 @@ function pageLoadDefault(){
 			var dataForecast = [];
 			var labelsHistorical = [];
 			var dataHistorical = [];
+			var histMax, histMin;
+			var foreMax, foreMin;
 			
 			for(var l=0; l<10; l++){
 				dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
@@ -38,6 +40,12 @@ function pageLoadDefault(){
 				dataHistorical[l] = (data.history.observations[l].tempi);
 				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
 			}
+			
+			histMax = Math.max.apply(Math, dataHistorical);
+			histMin = Math.min.apply(Math, dataHistorical);
+			
+			foreMax = Math.max.apply(Math, dataForecast);
+			foreMin = Math.min.apply(Math, dataForecast);
 				
 			// Generate graph data
 			var ctxForecast = document.getElementById("chartForecast").getContext("2d");
@@ -60,7 +68,15 @@ function pageLoadDefault(){
 						display: true,
 						text: '10 Day Forecast Conditions'
 					}
-				}
+					scales: {
+						yAxes: [{
+							ticks: {
+								min: foreMin,
+								max: foreMax
+							}
+						}]
+					}
+				}			
 			});
 			
 			// Generate graph data
@@ -83,6 +99,14 @@ function pageLoadDefault(){
 					title: {
 						display: true,
 						text: 'Historical Conditions (Previous Day - Hourly)'
+					}
+					scales: {
+						yAxes: [{
+							ticks: {
+								min: histMin,
+								max: histMax
+							}
+						}]
 					}
 				}
 			});
