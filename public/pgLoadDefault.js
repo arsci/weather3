@@ -1,7 +1,18 @@
-function pageLoadDefault(){				
+function pageLoadDefault(){			
+
+	var yesterayDate = new Date(new Date() - 86400000);
+	var yr = yesterayDate.getFullYear();
+	var mo = yesterayDate.getMonth();
+	var da = yesterayDate.getDate();
+	
+	if(Number(mo) < 10) mo = "0" + mo;
+	if(Number(da) < 10) da = "0" + da;
+	
+	var urlAPI = "//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_" + yr + mo + da + "/q/94105.json";
+
 	$.ajax({
 		type: 'GET',
-		url: '//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_20160822/q/94105.json',
+		url: urlAPI,
 		success: function(data) {	
 		
 			//Current Conditions
@@ -30,7 +41,7 @@ function pageLoadDefault(){
 				
 			// Generate graph data
 			var ctxForecast = document.getElementById("chartForecast").getContext("2d");
-			ctxForecast.canvas.height = 50;
+			ctxForecast.canvas.height = 25;
 			var chartForecast = new Chart(ctxForecast , {
 				responsive: 'true',
 				type: 'line',
@@ -48,24 +59,13 @@ function pageLoadDefault(){
 					title: {
 						display: true,
 						text: '10 Day Forecast Conditions'
-					},
-					scales: {
-						yAxes: [{
-							ticks: {
-								min: 55,
-								max: 75
-							}	
-						}],
-						xAxes: [{
-							display: true
-						}]
 					}
 				}
 			});
 			
 			// Generate graph data
 			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
-			ctxHistorical.canvas.height = 50;
+			ctxHistorical.canvas.height = 25;
 			var chartHistorical = new Chart(ctxHistorical , {
 				responsive: 'true',
 				type: 'line',
@@ -83,17 +83,6 @@ function pageLoadDefault(){
 					title: {
 						display: true,
 						text: 'Historical Conditions (Previous Day - Hourly)'
-					},
-					scales: {
-						yAxes: [{
-							ticks: {
-								min: 55,
-								max: 75
-							}	
-						}],
-						xAxes: [{
-							display: true
-						}]
 					}
 				}
 			});
