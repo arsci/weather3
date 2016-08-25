@@ -98,7 +98,7 @@ function pageLoadDefault(){
 					},
 					title: {
 						display: true,
-						text: 'Historical Conditions (Previous Day - Hourly)'
+						text: 'Historical Conditions (' + mo + '/' + da + '/' + yr + ' - Hourly)'
 					},
 					scales: {
 						yAxes: [{
