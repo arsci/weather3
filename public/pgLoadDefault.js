@@ -29,8 +29,8 @@ function pageLoadDefault(){
 			var foreMax, foreMin;
 			var histMax, histMin;
 			
-			var toHTMLForecast;
-			var toHTMLHistorical;
+			var toHTMLForecast = "";
+			var toHTMLHistorical = "";
 			
 			var ctxForecast = document.getElementById("chartForecast").getContext("2d");
 			var ctxHistorical = document.getElementById("chartHistorical").getContext("2d");
