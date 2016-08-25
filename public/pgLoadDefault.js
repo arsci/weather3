@@ -25,6 +25,8 @@ function pageLoadDefault(){
 			var dataHistoricalPre = [];
 			var dataHistoricalHum = [];
 			var dataHistoricalVis = [];
+			var m = 24;
+			var n = 0;
 			
 			var foreMax, foreMin;
 			var histMax, histMin;
@@ -49,13 +51,21 @@ function pageLoadDefault(){
 				dataForecastSky[l] = (data.forecast.simpleforecast.forecastday[l].conditions);
 			}
 			
-			for(var l=0; l<24; l++){
-				dataHistorical[l] = (data.history.observations[l].tempi);
-				labelsHistorical[l] = (data.history.observations[l].date.hour + ":" + data.history.observations[l].date.min);
-				dataHistoricalSky[l] = (data.history.observations[l].conds);
-				dataHistoricalPre[l] = (data.history.observations[l].pressurei) + 'inHg';
-				dataHistoricalHum[l] = (data.history.observations[l].hum) + '%';
-				dataHistoricalVis[l] = (data.history.observations[l].vism) + 'mi';			
+			for(var l=0; l<m; l++){
+				if(l>0){
+					if(data.history.observations[n].tempi.substring(0,1) == data.history.observations[n-1].tempi.substring(0,1) {
+						m++;
+						n++;
+					}
+				}
+				dataHistorical[l] = (data.history.observations[n].tempi);
+				labelsHistorical[l] = (data.history.observations[n].date.hour + ":" + data.history.observations[n].date.min);
+				dataHistoricalSky[l] = (data.history.observations[n].conds);
+				dataHistoricalPre[l] = (data.history.observations[n].pressurei) + 'inHg';
+				dataHistoricalHum[l] = (data.history.observations[n].hum) + '%';
+				dataHistoricalVis[l] = (data.history.observations[n].vism) + 'mi';		
+
+				n++
 			}
 			
 			toHTMLForecast = "<table width=100%><tr><th width=10%>Date:</th>";
