@@ -55,13 +55,13 @@ function pageLoadDefault(){
 			
 			
 			var toHTML = "<table><tr>";
-			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalSky[l] + "</td>";
+			for(var l=0; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalSky[l] + "</td>";
 			toHTML = toHTML + "</tr><tr>";
-			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalPre[l] + "</td>";
+			for(var l=0; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalPre[l] + "</td>";
 			toHTML = toHTML + "</tr><tr>";
-			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalHum[l] + "</td>"; 
+			for(var l=0; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalHum[l] + "</td>"; 
 			toHTML = toHTML + "</tr><tr>";
-			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalVis[l] + "</td>";
+			for(var l=0; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalVis[l] + "</td>";
 			toHTML = toHTML + "</tr></table>";
 			
 			document.getElementById("dataTable").innerHTML = toHTML;
