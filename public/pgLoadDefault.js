@@ -27,6 +27,8 @@ function pageLoadDefault(){
 			var dataHistoricalVis = [];
 			var m = 24;
 			var n = 0;
+			var chk1;
+			var chk2;
 			
 			var foreMax, foreMin;
 			var histMax, histMin;
@@ -53,7 +55,9 @@ function pageLoadDefault(){
 			
 			for(var l=0; l<m; l++){
 				if(l>0){
-					if(data.history.observations[n].tempi.substring(0,1) == data.history.observations[n-1].tempi.substring(0,1)) {
+					chk1 = data.history.observations[n].tempi;
+					chk2 = data.history.observations[n-1].tempi;
+					if(chk1.substring(0,1) == chk2.substring(0,1)) {
 						m++;
 						n++;
 					}
