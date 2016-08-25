@@ -9,8 +9,7 @@ function pageLoadDefault(){
 	if(Number(da) < 10) da = "0" + da;
 	
 	var urlAPI = "//api.wunderground.com/api/d95017df2847b211/conditions/forecast10day/history_" 
-				 + yr + mo + da + 
-				 "/q/94105.json";
+				 + yr + mo + da + "/q/94105.json";
 
 	$.ajax({
 		type: 'GET',
