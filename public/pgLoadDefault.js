@@ -18,8 +18,8 @@ function pageLoadDefault(){
 			//Current Conditions
 			$("#location").text(data.current_observation.observation_location.full);
 			$("#temp_f").text(data.current_observation.temperature_string);
-			$("#visibility_mi").text(data.current_observation.visibility_mi);
-			$("#pressure_in").text(data.current_observation.pressure_in);
+			$("#visibility_mi").text(data.current_observation.visibility_mi + 'mi');
+			$("#pressure_in").text(data.current_observation.pressure_in 'inHg');
 			$("#observation_time").text(data.current_observation.observation_time);
 			$("#relative_humidity").text(data.current_observation.relative_humidity);
 			$("#wind_string").text(data.current_observation.wind_string);
