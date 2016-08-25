@@ -52,17 +52,19 @@ function pageLoadDefault(){
 				dataHistoricalVis[l] = (data.history.observations[l].vism);			
 			}
 			
-			document.getElementById("dataTable").innerHTML = toHTML;
+			
 			
 			var toHTML = "<table><tr>";
 			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalSky[l] + "</td>";
-			toHTML = toHTML + "</tr><tr>"
+			toHTML = toHTML + "</tr><tr>";
 			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalPre[l] + "</td>";
-			toHTML = toHTML + "</tr><tr>"
+			toHTML = toHTML + "</tr><tr>";
 			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalHum[l] + "</td>"; 
-			toHTML = toHTML + "</tr><tr>"
+			toHTML = toHTML + "</tr><tr>";
 			for(var l=0; l<24; l++) toHTML = "<td>" + dataHistoricalVis[l] + "</td>";
-			toHTML = toHTML + "</tr></table>"
+			toHTML = toHTML + "</tr></table>";
+			
+			document.getElementById("dataTable").innerHTML = toHTML;
 			
 			histMax = (Math.round(Math.max.apply(Math, dataHistorical)/2) * 2) + 2;
 			histMin = (Math.round(Math.min.apply(Math, dataHistorical)/2) * 2) - 2;
