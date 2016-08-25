@@ -1,9 +1,9 @@
 function pageLoadDefault(){			
 
-	var yesterayDate = new Date(new Date() - 86400000);
-	var yr = yesterayDate.getFullYear();
-	var mo = yesterayDate.getMonth() + 1;
-	var da = yesterayDate.getDate();
+	var yesterdayDate = new Date(new Date() - 86400000);
+	var yr = yesterdayDate.getFullYear();
+	var mo = yesterdayDate.getMonth() + 1;
+	var da = yesterdayDate.getDate();
 	
 	if(Number(mo) < 10) mo = "0" + mo;
 	if(Number(da) < 10) da = "0" + da;
@@ -70,40 +70,40 @@ function pageLoadDefault(){
 			}
 			
 			toHTMLForecast = "<table width=100%><tr><th width=10%>Date:</th>";
-			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<th width=9%>" + labelsForecastL[l] + "</th>";
-			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Tmp:</th>";
-			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<td width=9%>" + dataForecast[l] + "&#8457;</td>";
-			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=10%>Sky:</th>";
-			for(var l=0; l<10; l++) toHTMLForecast = toHTMLForecast + "<td width=9%>" + dataForecastSky[l] + "</td>";
-			toHTMLForecast = toHTMLForecast + "</tr></table>";
+			for(var l=0; l<10; l++) toHTMLForecast += "<th width=9%>" + labelsForecastL[l] + "</th>";
+			toHTMLForecast += "</tr><tr><th width=10%>Tmp:</th>";
+			for(var l=0; l<10; l++) toHTMLForecast += "<td width=9%>" + dataForecast[l] + "&#8457;</td>";
+			toHTMLForecast += "</tr><tr><th width=10%>Sky:</th>";
+			for(var l=0; l<10; l++) toHTMLForecast += "<td width=9%>" + dataForecastSky[l] + "</td>";
+			toHTMLForecast += "</tr></table>";
 			
 			toHTMLHistorical = "Before Noon<br><table width=100%><tr><th width=4%>Time:</th>";
-			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<th width=8%>" + labelsHistorical[l] + "</th>";
-			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Tmp:</th>";
-			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
-			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Sky:</th>";
-			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
-			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Pres:</th>";
-			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalPre[l] + "</td>";
-			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Hum:</th>";
-			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalHum[l] + "</td>"; 
-			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Visb:</th>";
-			for(var l=0; l<12; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalVis[l] + "</td>";
-			toHTMLHistorical = toHTMLHistorical + "</tr></table>";
+			for(var l=0; l<12; l++) toHTMLHistorical += "<th width=8%>" + labelsHistorical[l] + "</th>";
+			toHTMLHistorical += "</tr><tr><th width=4%>Tmp:</th>";
+			for(var l=0; l<12; l++) toHTMLHistorical += "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
+			toHTMLHistorical += "</tr><tr><th width=4%>Sky:</th>";
+			for(var l=0; l<12; l++) toHTMLHistorical += "<td width=8%>" + dataHistoricalSky[l] + "</td>";
+			toHTMLHistorical += "</tr><tr><th width=4%>Pres:</th>";
+			for(var l=0; l<12; l++) toHTMLHistorical += "<td width=8%>" + dataHistoricalPre[l] + "</td>";
+			toHTMLHistorical += "</tr><tr><th width=4%>Hum:</th>";
+			for(var l=0; l<12; l++) toHTMLHistorical += "<td width=8%>" + dataHistoricalHum[l] + "</td>"; 
+			toHTMLHistorical += "</tr><tr><th width=4%>Visb:</th>";
+			for(var l=0; l<12; l++) toHTMLHistorical += "<td width=8%>" + dataHistoricalVis[l] + "</td>";
+			toHTMLHistorical += "</tr></table>";
 			
-			toHTMLHistorical = toHTMLHistorical + "<br>After Noon<br><table width=100%><tr><th width=4%>Time:</th>";
-			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<th width=8%>" + labelsHistorical[l] + "</th>";
-			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Tmp:</th>";
-			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
-			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Sky:</th>";
-			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
-			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Pres:</th>";
-			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalPre[l] + "</td>";
-			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Hum:</th>";
-			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<td width=8%>" + dataHistoricalHum[l] + "</td>"; 
-			toHTMLHistorical = toHTMLHistorical + "</tr><tr><th width=4%>Visb:</th>";
-			for(var l=12; l<24; l++) toHTMLHistorical = toHTMLHistorical + "<td>" + dataHistoricalVis[l] + "</td>";
-			toHTMLHistorical = toHTMLHistorical + "</tr></table>";
+			toHTMLHistorical += "<br>After Noon<br><table width=100%><tr><th width=4%>Time:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical += "<th width=8%>" + labelsHistorical[l] + "</th>";
+			toHTMLHistorical += "</tr><tr><th width=4%>Tmp:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical += "<td width=8%>" + dataHistorical[l] + "&#8457;</td>";
+			toHTMLHistorical += "</tr><tr><th width=4%>Sky:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical += "<td width=8%>" + dataHistoricalSky[l] + "</td>";
+			toHTMLHistorical += "</tr><tr><th width=4%>Pres:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical += "<td width=8%>" + dataHistoricalPre[l] + "</td>";
+			toHTMLHistorical += "</tr><tr><th width=4%>Hum:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical += "<td width=8%>" + dataHistoricalHum[l] + "</td>"; 
+			toHTMLHistorical += "</tr><tr><th width=4%>Visb:</th>";
+			for(var l=12; l<24; l++) toHTMLHistorical += "<td>" + dataHistoricalVis[l] + "</td>";
+			toHTMLHistorical += "</tr></table>";
 			
 			document.getElementById("dataTableForecast").innerHTML = toHTMLForecast;
 			document.getElementById("dataTableHistorical").innerHTML = toHTMLHistorical;
