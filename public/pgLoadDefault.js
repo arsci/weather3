@@ -27,8 +27,6 @@ function pageLoadDefault(){
 			var dataHistoricalVis = [];
 			var m = 24;
 			var n = 0;
-			var ck1;
-			var ck2;
 			
 			var foreMax, foreMin;
 			var histMax, histMin;
@@ -55,10 +53,7 @@ function pageLoadDefault(){
 			
 			for(var l=0; n<m; l++){
 				if(l>0){
-				
-					ck1 = data.history.observations[n].date.hour;
-					ck2 = data.history.observations[n-1].date.hour;
-					if( ck1 == ck2 ) {
+					if(data.history.observations[n].date.hour == data.history.observations[n-1].date.hour) {
 						m++;
 						n++;
 					}
@@ -69,7 +64,6 @@ function pageLoadDefault(){
 				dataHistoricalPre[l] = (data.history.observations[n].pressurei) + 'inHg';
 				dataHistoricalHum[l] = (data.history.observations[n].hum) + '%';
 				dataHistoricalVis[l] = (data.history.observations[n].vism) + 'mi';		
-
 				n++
 			}
 			
