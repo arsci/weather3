@@ -2,7 +2,7 @@ function pageLoadDefault(){
 
 	var yesterayDate = new Date(new Date() - 86400000);
 	var yr = yesterayDate.getFullYear();
-	var mo = yesterayDate.getMonth();
+	var mo = yesterayDate.getMonth() + 1;
 	var da = yesterayDate.getDate();
 	
 	if(Number(mo) < 10) mo = "0" + mo;
@@ -34,13 +34,15 @@ function pageLoadDefault(){
 			var dataHistoricalPre = [];
 			var dataHistoricalHum = [];
 			var dataHistoricalVis = [];
+			var dataForecastSky = [];
 			
 			var toHTML;
-			
+			var toHTMLForecast;
 			
 			for(var l=0; l<10; l++){
 				dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
 				labelsForecast[l] = (data.forecast.simpleforecast.forecastday[l].date.month + "/" + data.forecast.simpleforecast.forecastday[l].date.day + "/" + data.forecast.simpleforecast.forecastday[l].date.year);
+				dataForecastSky[l] = (data.forecast.simpleforecast.forecastday[l].conditions);
 			}
 			
 			for(var l=0; l<24; l++){
@@ -54,6 +56,8 @@ function pageLoadDefault(){
 			
 			var toHTML = "<table width=100%><tr><th width=4%>Time:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<th width=8%>" + labelsHistorical[l] + "</th>";
+			toHTML = toHTML + "</tr><tr><th width=4%>Tmp:</th>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<th width=8%>" + dataHistorical[l] + "</th>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Sky:</th>";
 			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Pres:</th>";
@@ -66,6 +70,8 @@ function pageLoadDefault(){
 			
 			toHTML = toHTML + "<br><table width=100%><tr><th width=4%>Time:</th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<th width=8%>" + labelsHistorical[l] + "</th>";
+			toHTML = toHTML + "</tr><tr><th width=4%>Tmp:</th>";
+			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistorical[l] + "</td>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Sky:</th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
 			toHTML = toHTML + "</tr><tr><th width=4%>Pres:</th>";
@@ -77,6 +83,24 @@ function pageLoadDefault(){
 			toHTML = toHTML + "</tr></table>";
 			
 			document.getElementById("dataTable").innerHTML = toHTML;
+			
+			var toHTMLForecast = "<table width=100%><tr><th width=4%>Time:</th>";
+			for(var l=0; l<12; l++) toHTML = toHTMLForecast + "<th width=8%>" + labelsForecast[l] + "</th>";
+			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=4%>Tmp:</th>";
+			for(var l=0; l<12; l++) toHTML = toHTMLForecast + "<th width=8%>" + dataForecast[l] + "</th>";
+			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=4%>Sky:</th>";
+			for(var l=0; l<12; l++) toHTML = toHTMLForecast + "<td width=8%>" + dataForecastSky[l] + "</td>";
+			toHTMLForecast = toHTMLForecast + "</tr></table>";
+			
+			toHTMLForecast = toHTMLForecast + "<br><table width=100%><tr><th width=4%>Time:</th>";
+			for(var l=12; l<24; l++) toHTMLForecast = toHTMLForecast + "<th width=8%>" + labelsHistorical[l] + "</th>";
+			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=4%>Tmp:</th>";
+			for(var l=12; l<24; l++) toHTMLForecast = toHTMLForecast + "<th width=8%>" + dataHistorical[l] + "</th>";
+			toHTMLForecast = toHTMLForecast + "</tr><tr><th width=4%>Sky:</th>";
+			for(var l=12; l<24; l++) toHTMLForecast = toHTMLForecast + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
+			toHTMLForecast = toHTMLForecast + "</tr></table>";
+			
+			document.getElementById("dataTable2").innerHTML = toHTMLForecast;
 			
 			histMax = (Math.round(Math.max.apply(Math, dataHistorical)/2) * 2) + 2;
 			histMin = (Math.round(Math.min.apply(Math, dataHistorical)/2) * 2) - 2;
