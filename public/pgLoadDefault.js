@@ -54,27 +54,27 @@ function pageLoadDefault(){
 			
 			
 			
-			var toHTML = "<table width=100%><tr><th width=1%>Time:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<th width=1%>" + labelsHistorical[l] + "</th>";
-			toHTML = toHTML + "</tr><tr><th width=1%>Sky:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<td>" + dataHistoricalSky[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=1%>Pres:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<td>" + dataHistoricalPre[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=1%>Hum:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<td>" + dataHistoricalHum[l] + "</td>"; 
-			toHTML = toHTML + "</tr><tr><th width=1%>Visb:</th>";
-			for(var l=0; l<12; l++) toHTML = toHTML + "<td>" + dataHistoricalVis[l] + "</td>";
+			var toHTML = "<table width=100%><tr><th width=4%>Time:</th>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<th width=8%>" + labelsHistorical[l] + "</th>";
+			toHTML = toHTML + "</tr><tr><th width=4%>Sky:</th>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
+			toHTML = toHTML + "</tr><tr><th width=4%>Pres:</th>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalPre[l] + "</td>";
+			toHTML = toHTML + "</tr><tr><th width=4%>Hum:</th>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalHum[l] + "</td>"; 
+			toHTML = toHTML + "</tr><tr><th width=4%>Visb:</th>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalVis[l] + "</td>";
 			toHTML = toHTML + "</tr></table>";
 			
-			toHTML = toHTML + "<br><table width=100%><tr><th width=1%>Time:</th>";
-			for(var l=12; l<24; l++) toHTML = toHTML + "<th>" + labelsHistorical[l] + "</th>";
-			toHTML = toHTML + "</tr><tr><th width=1%>Sky:</th>";
-			for(var l=12; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalSky[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=1%>Pres:</th>";
-			for(var l=12; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalPre[l] + "</td>";
-			toHTML = toHTML + "</tr><tr><th width=1%>Hum:</th>";
-			for(var l=12; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalHum[l] + "</td>"; 
-			toHTML = toHTML + "</tr><tr><th width=1%>Visb:</th>";
+			toHTML = toHTML + "<br><table width=100%><tr><th width=4%>Time:</th>";
+			for(var l=12; l<24; l++) toHTML = toHTML + "<th width=8%>" + labelsHistorical[l] + "</th>";
+			toHTML = toHTML + "</tr><tr><th width=4%>Sky:</th>";
+			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalSky[l] + "</td>";
+			toHTML = toHTML + "</tr><tr><th width=4%>Pres:</th>";
+			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalPre[l] + "</td>";
+			toHTML = toHTML + "</tr><tr><th width=4%>Hum:</th>";
+			for(var l=12; l<24; l++) toHTML = toHTML + "<td width=8%>" + dataHistoricalHum[l] + "</td>"; 
+			toHTML = toHTML + "</tr><tr><th width=4%>Visb:</th>";
 			for(var l=12; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalVis[l] + "</td>";
 			toHTML = toHTML + "</tr></table>";
 			
