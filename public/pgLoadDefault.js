@@ -55,15 +55,27 @@ function pageLoadDefault(){
 			
 			
 			var toHTML = "<table><tr>";
-			for(var l=0; l<24; l++) toHTML = toHTML + "<th>" + labelsHistorical[l] + "</th>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<th>Time: </th><th>" + labelsHistorical[l] + "</th>";
 			toHTML = toHTML + "</tr><tr>";
-			for(var l=0; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalSky[l] + "</td>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<th>Sky:  </th><td>" + dataHistoricalSky[l] + "</td>";
 			toHTML = toHTML + "</tr><tr>";
-			for(var l=0; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalPre[l] + "</td>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<th>Pres: </th><td>" + dataHistoricalPre[l] + "</td>";
 			toHTML = toHTML + "</tr><tr>";
-			for(var l=0; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalHum[l] + "</td>"; 
+			for(var l=0; l<12; l++) toHTML = toHTML + "<th>Hum:  </th><td>" + dataHistoricalHum[l] + "</td>"; 
 			toHTML = toHTML + "</tr><tr>";
-			for(var l=0; l<24; l++) toHTML = toHTML + "<td>" + dataHistoricalVis[l] + "</td>";
+			for(var l=0; l<12; l++) toHTML = toHTML + "<th>Visb: </th><td>" + dataHistoricalVis[l] + "</td>";
+			toHTML = toHTML + "</tr></table>";
+			
+			toHTML = toHTML + "<table><tr>";
+			for(var l=12; l<24; l++) toHTML = toHTML + "<th>Time: </th><th>" + labelsHistorical[l] + "</th>";
+			toHTML = toHTML + "</tr><tr>";
+			for(var l=12; l<24; l++) toHTML = toHTML + "<th>Sky:  </th><td>" + dataHistoricalSky[l] + "</td>";
+			toHTML = toHTML + "</tr><tr>";
+			for(var l=12; l<24; l++) toHTML = toHTML + "<th>Pres: </th><td>" + dataHistoricalPre[l] + "</td>";
+			toHTML = toHTML + "</tr><tr>";
+			for(var l=12; l<24; l++) toHTML = toHTML + "<th>Hum:  </th><td>" + dataHistoricalHum[l] + "</td>"; 
+			toHTML = toHTML + "</tr><tr>";
+			for(var l=12; l<24; l++) toHTML = toHTML + "<th>Visb: </th><td>" + dataHistoricalVis[l] + "</td>";
 			toHTML = toHTML + "</tr></table>";
 			
 			document.getElementById("dataTable").innerHTML = toHTML;
