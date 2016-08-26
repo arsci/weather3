@@ -46,6 +46,8 @@ function pageLoadDefault(){
 			document.getElementById("observation_time").innerHTML = data.current_observation.observation_time;
 			document.getElementById("relative_humidity").innerHTML = data.current_observation.relative_humidity;
 			document.getElementById("wind_string").innerHTML = data.current_observation.wind_string;
+			document.getElementById("src_url").innerHTML = "http://www.wunderground.com/api";
+			document.getElementById("src_api_ver").innerHTML = data.response.features.version;
 			
 			for(var l=0; l<10; l++){
 				dataForecast[l] = (data.forecast.simpleforecast.forecastday[l].high.fahrenheit);
