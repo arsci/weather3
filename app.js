@@ -1,6 +1,3 @@
-var express = require('express');
-var request = require('request');
-
 var weather_host = "http://api.wunderground.com/api/d95017df2847b211"
 
 function weatherAPI(path, qs, done) {
