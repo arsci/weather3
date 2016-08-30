@@ -2,7 +2,6 @@ var express = require('express');
 var request = require('request');
 
 var app = express();
-app.use(express.static(__dirname + '/public'));
 
 var weather_host = "http://api.wunderground.com/api/d95017df2847b211"
 
