@@ -1,12 +1,9 @@
 var express = require('express');
 var request = require('request');
-var cfenv = require('cfenv');
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
 
-// get the app environment from Cloud Foundry
-var appEnv = cfenv.getAppEnv();
 var weather_host = "http://api.wunderground.com/api/d95017df2847b211"
 
 function weatherAPI(path, qs, done) {
