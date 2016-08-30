@@ -5,8 +5,12 @@ var cfenv = require('cfenv');
 var app = express();
 app.use(express.static(__dirname + '/public'));
 
+// get the app environment from Cloud Foundry
+var appEnv = cfenv.getAppEnv();
+var weather_host = "http://api.wunderground.com/api/d95017df2847b211"
+
 function weatherAPI(path, qs, done) {
-    var url = "http://api.wunderground.com/api/d95017df2847b211" + path;
+    var url = weather_host + path;
     console.log(url, qs);
     request({
         url: url,
@@ -36,7 +40,7 @@ function weatherAPI(path, qs, done) {
 }
 
 app.get('/api/weather', function(req, res) {
-    	weatherAPI("/conditions/forecast10day/q/94105.json", {
+    	weatherAPI("/conditions/forecast10day/history_20160829/q/94105.json", {
         units: req.query.units || "e",
         language: req.query.language || "en"
     }, function(err, result) {
