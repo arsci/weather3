@@ -1,7 +1,12 @@
-var weather_host = "http://api.wunderground.com/api/d95017df2847b211"
+var express = require('express');
+var request = require('request');
+var cfenv = require('cfenv');
+
+var app = express();
+app.use(express.static(__dirname + '/public'));
 
 function weatherAPI(path, qs, done) {
-    var url = weather_host + path;
+    var url = "http://api.wunderground.com/api/d95017df2847b211" + path;
     console.log(url, qs);
     request({
         url: url,
