@@ -1,12 +1,9 @@
 var express = require('express');
 var request = require('request');
-var cfenv = require('cfenv');
 
 var app = express();
 app.use(express.static('public'));
 
-// get the app environment from Cloud Foundry
-var appEnv = cfenv.getAppEnv();
 var weather_host = "http://api.wunderground.com/api/d95017df2847b211";
 
 function weatherAPI(path, done) {
@@ -50,6 +47,6 @@ app.get('/api/weather', function(req, res) {
     });
 });
 
-app.listen(appEnv.port, appEnv.bind, function() {
-  console.log("server starting on " + appEnv.url);
+app.listen(app.get('port'), function () {
+	console.log('Express server listening on port ' + app.get('port'));
 });
