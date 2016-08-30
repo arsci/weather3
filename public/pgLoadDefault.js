@@ -1,8 +1,16 @@
 function pageLoadDefault(){			
+
+	var yesterdayDate = new Date(new Date() - 86400000);
+	var yr = yesterdayDate.getFullYear();
+	var mo = yesterdayDate.getMonth() + 1;
+	var da = yesterdayDate.getDate();
+	
+	if(Number(mo) < 10) mo = "0" + mo;
+	if(Number(da) < 10) da = "0" + da;
 	
 	var urlAPI = "/api/weather";
 
-	$.ajax({
+		$.ajax({
 		type: 'GET',
 		url: urlAPI,
 		success: function(data) {	
