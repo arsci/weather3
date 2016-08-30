@@ -1,14 +1,17 @@
 var express = require('express');
 var request = require('request');
+var cfenv = require('cfenv');
 
 var app = express();
 app.use(express.static('public'));
 
+// get the app environment from Cloud Foundry
+var appEnv = cfenv.getAppEnv();
 var weather_host = "http://api.wunderground.com/api/d95017df2847b211";
 
-function weatherAPI(path, qs, done) {
+function weatherAPI(path, done) {
     var url = weather_host + path;
-    console.log(url, qs);
+    console.log(url);
     request({
         url: url,
         method: "GET",
@@ -16,7 +19,6 @@ function weatherAPI(path, qs, done) {
             "Content-Type": "application/json;charset=utf-8",
             "Accept": "application/json"
         },
-        qs: qs
     }, function(err, req, data) {
         if (err) {
             done(err);
@@ -37,10 +39,7 @@ function weatherAPI(path, qs, done) {
 }
 
 app.get('/api/weather', function(req, res) {
-    	weatherAPI("/conditions/forecast10day/history_20160829/q/94105.json", {
-        units: req.query.units || "e",
-        language: req.query.language || "en"
-    }, function(err, result) {
+    	weatherAPI("/conditions/forecast10day/history_20160829/q/94105.json", function(err, result) {
         if (err) {
         	console.log(err);
             res.send(err).status(400);
