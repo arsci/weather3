@@ -37,7 +37,7 @@ function weatherAPI(path, done) {
 }
 
 app.get('/api/weather', function(req, res) {
-    	weatherAPI("/history_20160829/q/93402.json", function(err, result) {
+    	weatherAPI("/history_20160830/q/93402.json", function(err, result) {
         if (err) {
         	console.log(err);
             res.send(err).status(400);
