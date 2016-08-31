@@ -18,6 +18,8 @@ function pageLoadDefault(){
 		
 		a += "</table>";
 		
+		document.getElementById("outputdata").innerHTML = a;
+		
 		}
 	})
 }		
