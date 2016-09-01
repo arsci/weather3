@@ -37,7 +37,10 @@ function weatherAPI(path, done) {
 }
 
 app.get('/api/weather', function(req, res) {
-    	weatherAPI("/history_20160830/q/93402.json", function(err, result) {
+	var day = req.param('date');
+  	var zipcode = req.param('zip');
+  	
+    	weatherAPI("/history_" + day + "20160830/q/" + zipcode + ".json", function(err, result) {
         if (err) {
         	console.log(err);
             res.send(err).status(400);
