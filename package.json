@@ -1,6 +1,6 @@
 {
   "name": "Weather API Data (WU) App",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Weather Underground API Weather Data Application",
   "main": "app.js",
   "scripts": {
