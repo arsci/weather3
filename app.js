@@ -37,11 +37,16 @@ function weatherAPI(path, done) {
 }
 
 app.get('/api/weather', function(req, res) {
-	//var day = req.param('date');
-  	//var zipcode = req.param('zip');	
-  	//res.redirect("/");
-  	
-    	weatherAPI("/history_" + "20160825" + "/q/" + "94523" + ".json", function(err, result) {
+	
+	var yesterdayDate = new Date(new Date() - (1000*60*60*24));
+	var yr = yesterdayDate.getFullYear();
+	var mo = yesterdayDate.getMonth() + 1;
+	var da = yesterdayDate.getDate();
+	
+	if(Number(mo) < 10) mo = "0" + mo;
+	if(Number(da) < 10) da = "0" + da;
+	
+    	weatherAPI("/conditions/forecast10day/history_" + yr + mo + da + "/q/94105.json", function(err, result) {
         if (err) {
         	console.log(err);
             res.send(err).status(400);
