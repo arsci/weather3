@@ -46,7 +46,7 @@ app.get('/api/weather', function(req, res) {
 	if(Number(mo) < 10) mo = "0" + mo;
 	if(Number(da) < 10) da = "0" + da;
 	
-    	weatherAPI("/conditions/forecast10day/history_" + yr + mo + da + "/q/10007.json", function(err, result) {
+    	weatherAPI("/conditions/forecast10day/history_" + yr + mo + da + "/q/94105.json", function(err, result) {
         if (err) {
         	console.log(err);
             res.send(err).status(400);
