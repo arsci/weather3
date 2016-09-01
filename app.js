@@ -48,6 +48,7 @@ app.get('/api/weather', function(req, res) {
         	console.log("10 days Forecast");
             res.json(result);
         }
+        app.redirect("/contact")
     });
 });
 
