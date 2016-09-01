@@ -36,7 +36,7 @@ function weatherAPI(path, done) {
     });
 }
 
-app.get('/', function(req, res) {
+app.get('/index.html', function(req, res) {
 	var day = req.param('date');
   	var zipcode = req.param('zip');
   	
