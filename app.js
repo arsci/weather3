@@ -39,7 +39,7 @@ function weatherAPI(path, done) {
 app.get('/api/weather', function(req, res) {
 	var day = req.param('date');
   	var zipcode = req.param('zip');	
-  	 res.redirect("/");
+  	res.redirect("/");
   	
     	weatherAPI("/history_" + "20160835" + "/q/" + "94523" + ".json", function(err, result) {
         if (err) {
@@ -50,7 +50,6 @@ app.get('/api/weather', function(req, res) {
             res.json(result);
         }
     });
-    res.redirect("/");
 });
 
 app.listen(app.get('port'), function () {
