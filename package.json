@@ -1,5 +1,5 @@
 {
-  "name": "Weather API",
+  "name": "weather-api",
   "version": "0.0.0",
   "description": "Weather Underground API Weather Data Application",
   "main": "app.js",
