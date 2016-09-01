@@ -5,6 +5,8 @@ var app = express();
 app.set('port', process.env.PORT || 5000);
 app.use(express.static('public'));
 
+process.env.TZ = 'America/Los_Angeles';
+
 var weather_host = "http://api.wunderground.com/api/d95017df2847b211";
 
 function weatherAPI(path, done) {
