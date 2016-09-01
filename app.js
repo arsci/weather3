@@ -48,8 +48,8 @@ app.get('/api/weather', function(req, res) {
         	console.log("10 days Forecast");
             res.json(result);
         }
-        app.redirect("/index.html");
     });
+    app.redirect("/index.html");
 });
 
 app.listen(app.get('port'), function () {
