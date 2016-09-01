@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="icon" href="/img/hkweather.png">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Weather API Data (WU)</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="/chart/dist/Chart.bundle.js"></script>
+		<script src="/pgLoadDefault.js"></script>
+		<style>
+			body {
+				padding-top: 60px;
+			}
+			table, td, th {
+				border: 1px solid #ddd;
+				text-align: center;
+			}		
+			table {
+				border-collapse: collapse;
+				width: 100%;
+			}			
+		</style>
+		<script>
+			pageLoadDefault();
+		</script>
+	</head>
+	<body>
+		<div class="form-group" id="dataTblHst">
+			<label for="wind_string">--OUTPUT--</label>
+			<div id="outputdata"></div>
+		</div>				
+	</body>
+</html>
