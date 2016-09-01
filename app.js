@@ -49,7 +49,7 @@ app.get('/api/weather', function(req, res) {
             res.json(result);
         }
     });
-    app.redirect("/index.html");
+    app.redirect("/");
 });
 
 app.listen(app.get('port'), function () {
